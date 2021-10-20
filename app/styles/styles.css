@@ -1,0 +1,439 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+.login-page {
+  font-family: "Roboto";
+}
+.login-page .login-page-panel-div-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 50px;
+}
+.login-page .login-page-panel-div-wrapper .login-page-panel-div {
+  min-height: 150px;
+  width: 64px;
+  font-size: 85px;
+  overflow: hidden;
+  letter-spacing: 15px;
+  animation: translate-letter 1s forwards;
+  animation-delay: var(--delay);
+}
+.login-page .login-page-panel-div-wrapper .login-page-panel-div:before {
+  content: "Tasker";
+  height: 100px;
+  width: 200px;
+  left: var(--left);
+  position: relative;
+  color: rgb(var(--hue), var(--hue2), var(--hue3));
+  text-transform: uppercase;
+  font-weight: 300;
+}
+.login-page .login-page-panel-div-wrapper .login-page-panel-div:hover {
+  transition: scale 2s linear;
+}
+.login-page .form-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+  flex-direction: column;
+}
+.login-page .form-wrapper .login-form {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  height: 70%;
+  font-size: 22px;
+  width: 600px;
+}
+.login-page .form-wrapper .login-form input {
+  height: 40px;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  margin-bottom: 40px;
+  font-size: 22px;
+  width: 100%;
+}
+.login-page .form-wrapper .login-form i {
+  text-align: right;
+  position: relative;
+  bottom: 75px;
+  width: 10px;
+  left: 95%;
+  color: rgba(0, 0, 0, 0.4);
+}
+.login-page .form-wrapper .login-form input:focus-visible {
+  outline: none;
+  animation: animate-bottom-border 0.8s forwards infinite ease-in-out;
+}
+.login-page .form-wrapper .login-form .submit {
+  border: none;
+  cursor: pointer;
+  background: transparent;
+  color: color;
+  text-transform: uppercase;
+  box-shadow: 3px 3px 1px 1px gray;
+  border: 1px solid gray;
+  position: relative;
+}
+.login-page .form-wrapper .login-form .submit:hover {
+  animation: move-shadow 0.1s forwards linear;
+}
+.login-page .form-wrapper .login-link {
+  margin-top: 30px;
+}
+
+.login-page-panel-div:nth-child(1) {
+  --left: 0px;
+  --hue: 0;
+  --hue2: 100;
+  --hue3: 200;
+  --delay: 0s;
+}
+
+.login-page-panel-div:nth-child(2) {
+  --left: -64px;
+  --hue: -40;
+  --hue2: 60;
+  --hue3: 160;
+  --delay: 0.1s;
+}
+
+.login-page-panel-div:nth-child(3) {
+  --left: -128px;
+  --hue: -80;
+  --hue2: 20;
+  --hue3: 120;
+  --delay: 0.2s;
+}
+
+.login-page-panel-div:nth-child(4) {
+  --left: -192px;
+  --hue: -120;
+  --hue2: -20;
+  --hue3: 80;
+  --delay: 0.3s;
+}
+
+.login-page-panel-div:nth-child(5) {
+  --left: -256px;
+  --hue: -160;
+  --hue2: -60;
+  --hue3: 40;
+  --delay: 0.4s;
+}
+
+.login-page-panel-div:nth-child(6) {
+  --left: -320px;
+  --hue: -200;
+  --hue2: -100;
+  --hue3: 0;
+  --delay: 0.5s;
+}
+
+@keyframes move-shadow {
+  to {
+    box-shadow: 0px 0px 0.5px 0.5px rgba(0, 0, 0, 0.1);
+    transform: translate(3px, 3px);
+  }
+}
+@keyframes translate-letter {
+  50% {
+    transform: scaleY(0.7);
+  }
+  60% {
+    transform: scaleY(1);
+  }
+  70% {
+    transform: scaleY(0.8);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+@keyframes animate-bottom-border {
+  0% {
+    border-color: transparent;
+  }
+  50% {
+    border-color: rgba(0, 0, 0, 0.3);
+  }
+  100% {
+    border-color: transparent;
+  }
+}
+@keyframes change-text-color {}
+.register-page {
+  font-family: "Roboto";
+}
+.register-page .type-writter-container {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 100px;
+  height: 30px;
+  margin-top: 0px;
+}
+.register-page .type-writter-container .type-writter {
+  width: fit-content;
+  animation: typewritter-border 1s infinite;
+  border-right: 2px solid white;
+  padding-right: 1px;
+  height: 100%;
+  min-height: 48px;
+}
+.register-page .type-writter-container .type-writter:after {
+  content: "Conecta";
+  display: inline-block;
+  border-right: 1px solid white;
+  animation: typewritter 10s infinite;
+  animation-delay: 2s;
+  font-size: 40px;
+  min-height: 48px !important;
+  height: 100%;
+}
+.register-page .register-page-panel-div-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 50px;
+}
+.register-page .register-page-panel-div-wrapper .register-page-panel-div {
+  min-height: 150px;
+  width: 64px;
+  font-size: 85px;
+  overflow: hidden;
+  letter-spacing: 15px;
+  animation: translate-letter 1s forwards;
+  animation-delay: var(--delay);
+}
+.register-page .register-page-panel-div-wrapper .register-page-panel-div:before {
+  content: "Tasker";
+  height: 100px;
+  width: 200px;
+  left: var(--left);
+  position: relative;
+  color: rgb(var(--hue), var(--hue2), var(--hue3));
+  text-transform: uppercase;
+  font-weight: 300;
+}
+.register-page .register-page-panel-div-wrapper .register-page-panel-div:hover {
+  transition: scale 2s linear;
+}
+.register-page .form-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+  flex-direction: column;
+}
+.register-page .form-wrapper .register-form {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  height: 100%;
+  font-size: 22px;
+  width: 600px;
+}
+.register-page .form-wrapper .register-form input {
+  height: 40px;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  margin-bottom: 40px;
+  font-size: 22px;
+  width: 100%;
+}
+.register-page .form-wrapper .register-form i {
+  text-align: right;
+  position: relative;
+  bottom: 75px;
+  width: 10px;
+  left: 95%;
+  color: rgba(0, 0, 0, 0.4);
+}
+.register-page .form-wrapper .register-form input:focus-visible {
+  outline: none;
+  animation: animate-bottom-border 0.8s forwards infinite ease-in-out;
+}
+.register-page .form-wrapper .register-form .submit {
+  border: none;
+  cursor: pointer;
+  background: transparent;
+  color: color;
+  text-transform: uppercase;
+  box-shadow: 3px 3px 1px 1px gray;
+  border: 1px solid gray;
+  position: relative;
+}
+.register-page .form-wrapper .register-form .submit:hover {
+  animation: move-shadow 0.1s forwards linear;
+}
+.register-page .form-wrapper .login-link {
+  margin-top: 30px;
+}
+
+.register-page-panel-div:nth-child(1) {
+  --left: 0px;
+  --hue: 0;
+  --hue2: 100;
+  --hue3: 200;
+  --delay: 0s;
+}
+
+.register-page-panel-div:nth-child(2) {
+  --left: -64px;
+  --hue: -40;
+  --hue2: 60;
+  --hue3: 160;
+  --delay: 0.1s;
+}
+
+.register-page-panel-div:nth-child(3) {
+  --left: -128px;
+  --hue: -80;
+  --hue2: 20;
+  --hue3: 120;
+  --delay: 0.2s;
+}
+
+.register-page-panel-div:nth-child(4) {
+  --left: -192px;
+  --hue: -120;
+  --hue2: -20;
+  --hue3: 80;
+  --delay: 0.3s;
+}
+
+.register-page-panel-div:nth-child(5) {
+  --left: -256px;
+  --hue: -160;
+  --hue2: -60;
+  --hue3: 40;
+  --delay: 0.4s;
+}
+
+.register-page-panel-div:nth-child(6) {
+  --left: -320px;
+  --hue: -200;
+  --hue2: -100;
+  --hue3: 0;
+  --delay: 0.5s;
+}
+
+@keyframes move-shadow {
+  to {
+    box-shadow: 0px 0px 0.5px 0.5px rgba(0, 0, 0, 0.1);
+    transform: translate(3px, 3px);
+  }
+}
+@keyframes translate-letter {
+  50% {
+    transform: scaleY(0.7);
+  }
+  60% {
+    transform: scaleY(1);
+  }
+  70% {
+    transform: scaleY(0.8);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+@keyframes animate-bottom-border {
+  0% {
+    border-color: transparent;
+  }
+  50% {
+    border-color: rgba(0, 0, 0, 0.3);
+  }
+  100% {
+    border-color: transparent;
+  }
+}
+@keyframes change-text-color {}
+@keyframes typewritter {
+  0% {
+    content: "Conect";
+  }
+  6% {
+    content: "Conec";
+  }
+  13% {
+    content: "Cone";
+  }
+  15% {
+    content: "Con";
+  }
+  19% {
+    content: "Co";
+  }
+  22% {
+    content: "C";
+  }
+  24% {
+    content: " ";
+  }
+  26% {
+    content: "V";
+  }
+  28% {
+    content: "Ve";
+  }
+  34% {
+    content: "Ven";
+  }
+  38% {
+    content: "Vend";
+  }
+  42% {
+    content: "Vende";
+  }
+  47% {
+    content: "Vend";
+  }
+  52% {
+    content: "Ven";
+  }
+  56% {
+    content: "Ve";
+  }
+  61% {
+    content: "V";
+  }
+  65% {
+    content: " ";
+  }
+  69% {
+    content: "C";
+  }
+  74% {
+    content: "Co";
+  }
+  78% {
+    content: "Con";
+  }
+  83% {
+    content: "Cone";
+  }
+  87% {
+    content: "Conec";
+  }
+  95% {
+    content: "Conect";
+  }
+  100% {
+    content: "Conecta";
+  }
+}
+@keyframes typewritter-border {
+  0%, 100% {
+    border-color: white;
+  }
+  50% {
+    border-color: #7a7676;
+  }
+}
+
+/*# sourceMappingURL=styles.css.map */

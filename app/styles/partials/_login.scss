@@ -1,0 +1,160 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+
+$panel-width: 64px;
+
+.login-page {
+  font-family: "Roboto";
+
+  .login-page-panel-div-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 50px;
+
+    .login-page-panel-div {
+      min-height: 150px;
+      width: $panel-width;
+      font-size: 85px;
+      overflow: hidden;
+      letter-spacing: 15px;
+      animation: translate-letter 1s forwards;
+      animation-delay: var(--delay);
+
+      &:before {
+        content: "Tasker";
+        height: 100px;
+        width: 200px;
+        left: var(--left);
+        position: relative;
+        color: rgb(var(--hue), var(--hue2), var(--hue3));
+        text-transform: uppercase;
+        font-weight: 300;
+      }
+
+      &:hover {
+        transition: scale 2s linear;
+         
+      }
+    }
+  }
+
+  .form-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+    flex-direction: column;
+    .login-form {
+      display: flex;
+      flex-direction: column;
+      width: 500px;
+      height: 70%;
+      font-size: 22px;
+      width: 600px;
+
+      input {
+        height: 40px;
+        border: none;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+        margin-bottom: 40px;
+        font-size: 22px;
+        width: 100%;
+      }
+
+      i{
+          text-align: right;
+          position: relative;
+          bottom: 75px;
+          width: 10px;
+          left: 95%;
+          color: rgba(0,0,0,0.4);
+      }
+
+      input:focus-visible {
+        outline: none;
+        animation: animate-bottom-border 0.8s forwards infinite ease-in-out;
+      }
+
+      .submit {
+        border: none;
+        cursor: pointer;
+        background: transparent;
+        color: color;
+        text-transform: uppercase;
+        box-shadow: 3px 3px 1px 1px gray;
+        border: 1px solid gray;
+        position: relative;
+        
+        &:hover{
+          animation: move-shadow 0.1s forwards linear;
+        }
+      }
+    }
+
+    .login-link{
+      margin-top: 30px;
+    }
+  }
+}
+
+@for $i from 0 to 6 {
+  .login-page-panel-div:nth-child(#{$i + 1}) {
+    --left: #{$panel-width * $i * -1};
+    --hue: #{0 - (40 * $i)};
+    --hue2: #{100 - (40 * $i)};
+    --hue3: #{200 - (40 * $i)};
+    --delay: #{$i * 0.1s};
+  }
+}
+
+
+@keyframes move-shadow{
+  to{
+    box-shadow: 0px 0px 0.5px 0.5px rgba(0,0,0,0.1);
+    transform: translate(3px, 3px);
+  }
+}
+
+@keyframes translate-letter {
+  0% {
+  }
+
+  50% {
+    transform: scaleY(0.7);
+  }
+
+  60% {
+    transform: scaleY(1);
+  }
+
+  70% {
+    transform: scaleY(0.8);
+  }
+
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes animate-bottom-border {
+  0% {
+    border-color: transparent;
+  }
+  50% {
+    border-color: rgba(0, 0, 0, 0.3);
+  }
+  100% {
+    border-color: transparent;
+  }
+}
+
+@keyframes change-text-color{
+  0%, 100%{
+
+  }
+
+  50%{
+
+  }
+}
