@@ -1,0 +1,3 @@
+home:
+  route: "/"
+  controller: "controllers/HomeController.php"
