@@ -1,0 +1,33 @@
+
+{% include 'partials/header.html.twig' with {'pageTitle': 'Register', 'bodyClass' : 'register-page'} %}
+
+ <div class="register-page-panel-div-wrapper">
+        <div class="register-page-panel-div"></div>
+        <div class="register-page-panel-div"></div>
+        <div class="register-page-panel-div"></div>
+        <div class="register-page-panel-div"></div>
+        <div class="register-page-panel-div"></div>
+        <div class="register-page-panel-div"></div>
+    </div>
+    <h1 class="type-writter-container"><span class="type-writter"></span></h1>
+
+    <div class="form-wrapper">
+        <form action="register" method="post" class="register-form">
+             <label for="username">Usuario</label>
+            <input type="textfield" name="username"></input>
+            <i class="fas fa-user"></i>
+            <label for="mail">Correo</label>
+            <input type="mail" name="mail"></input>
+            <i class="fas fa-envelope"></i>
+            <label for="password">Contraseña</label>
+            <input type="password" name="password">
+            <i class="fas fa-key"></i>
+            <label for="password">Confirmar contraseña</label>
+            <input type="password" name="password">
+            <i class="fas fa-key"></i>
+            <input class="submit" type="submit">
+        </form>
+        <a href="login" class="login-link">Inicia sesión</a>
+    </div>
+
+{% include 'partials/footer.html.twig' %}

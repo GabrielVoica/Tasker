@@ -30,7 +30,7 @@ foreach($yamlLoader as $yamlRoute){
     }
 }
 
-//If the royte doesn't exist the RouteNotFoundController is called
+//If the route doesn't exist the RouteNotFoundController is called
 if(!$existingRoute){
     include "controllers/RouteNotFoundController.php";
 }

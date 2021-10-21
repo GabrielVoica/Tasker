@@ -1,0 +1,26 @@
+{% include 'partials/header.html.twig' with {'pageTitle': 'Login', 'bodyClass' : 'login-page'} %}
+
+ <div class="login-page-panel-div-wrapper">
+        <div class="login-page-panel-div"></div>
+        <div class="login-page-panel-div"></div>
+        <div class="login-page-panel-div"></div>
+        <div class="login-page-panel-div"></div>
+        <div class="login-page-panel-div"></div>
+        <div class="login-page-panel-div"></div>
+    </div>
+
+    <div class="form-wrapper">
+        <form action="" method="post" class="login-form">
+            <label for="mail">Correo</label>
+            <input type="mail" name="mail"></input>
+            <i class="fas fa-user"></i>
+            <label for="password">Contraseña</label>
+            <input type="password" name="password">
+            <i class="fas fa-key"></i>
+            <input class="submit" type="submit">
+        </form>
+        <a href="register">Crea una cuenta gratis</a>
+    </div>
+
+
+{% include 'partials/footer.html.twig' %}

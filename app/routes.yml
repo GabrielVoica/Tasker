@@ -1,3 +1,11 @@
 home:
   route: "/"
   controller: "controllers/HomeController.php"
+
+login:
+  route: "/login"
+  controller: "controllers/LoginController.php"
+
+register:
+  route: "/register"
+  controller: "controllers/RegisterController.php"
