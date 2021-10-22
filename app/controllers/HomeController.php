@@ -4,6 +4,12 @@ namespace App\Controllers;
 
 include "../vendor/autoload.php";
 
+session_start();
+
+//Redirect to homepage if user is not logged
+if(!isset($_SESSION['logged']) || $_SESSION['logged'] != true ){
+    header('location: login');
+}
 
 
 /**

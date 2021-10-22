@@ -23,7 +23,12 @@ if(empty($_POST)){
 //This block of code executes when the user makes a post to the login form
 else{
     
-    echo "Loging....";
+    $username = $_POST['mail'];
+    $password = $_POST['password'];
+
+    $error = null;
+
+    echo $username . $password;
 
 
 }
