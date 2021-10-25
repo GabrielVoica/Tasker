@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # Tasker
 
 Tasker es un proyecto donde se implementa una tienda virtual donde se ofrecen servicios en lugar de productos. 
@@ -17,7 +17,7 @@ La estructura se basa principalmente en el patron MVC, y esta pensado para facil
 
 
 
-=======
+
 Work in process....
->>>>>>> 38edd86ca8a348332330d9d8af491c554f886070
+
 
