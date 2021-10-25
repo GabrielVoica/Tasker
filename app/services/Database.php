@@ -8,14 +8,10 @@ namespace App\Services;
  */
 class Database{
 
-    private $conexion = null;
-
+    private $connection = null;
     private $user = null;
-
     private $password = null;
-
     private $hostname = null;
-
     private $database = null;
 
 
@@ -27,13 +23,19 @@ class Database{
         $this->password = getenv('DB_PASSWORD');
         $this->hostname = getenv('DB_HOSTNAME');
         $this->database = getenv('DB_DATABASE');
+
+        $this->connect();
     }
 
 
     public function connect(){
-        $this->conexion = mysqli_connect($this->hostname,$this->user,$this->password,$this->database);
-        if($this->conexion == false){
+        $this->connection = mysqli_connect($this->hostname,$this->user,$this->password,$this->database);
+        if($this->connection == false){
             echo "Error connecting to the database";
         }
+    }
+
+    public function getConnection(){
+        return $this->connection;
     }
 }
