@@ -9,8 +9,6 @@ require __DIR__ . "/../services/Database.php";
 require __DIR__ . "/../services/ModelDataManipulator/modelContexts/MySqlModel.php";
 require __DIR__ . "/../services/ModelDataManipulator/ModelContext.php";
 
-
-
 session_start();
 
 /**
@@ -32,10 +30,9 @@ if(empty($_POST)){
 }
 //This block of code executes when the user makes a post to the login form
 else{
-
-  $conexion = new Database();
-  $conexion->connect();
-  $sql_context = new ModelContext(new MySqlModel($conexion));
+  $connection = new Database();
+  $connection_instance = $connection->getConnection();
+  $sql_context = new ModelContext(new MySqlModel($connection_instance));
   $sql_context->setTableName('users');
-  echo json_encode($sql_context->getExecutionInstance()->selectAll("users"));
+  echo json_encode($sql_context->getExecutionInstance()->selectAll("users")); 
 }
