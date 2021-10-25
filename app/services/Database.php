@@ -10,7 +10,7 @@ class Database{
 
     private $conexion = null;
 
-    private $user = null;
+    private $user =     null;
 
     private $password = null;
 

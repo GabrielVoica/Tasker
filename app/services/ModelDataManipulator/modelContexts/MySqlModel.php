@@ -17,7 +17,7 @@ class MySqlModel implements ModelStrategy{
     }
 
     public function selectAll($table){
-        $query = "SELECT * FROM ". $table;
+        $query = "SELECT * FROM '". $table . "';";
         return mysqli_query($this->conexion, $query);
     }
 
