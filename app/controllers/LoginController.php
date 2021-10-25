@@ -30,9 +30,12 @@ if(empty($_POST)){
 }
 //This block of code executes when the user makes a post to the login form
 else{
-  $connection = new Database();
-  $connection_instance = $connection->getConnection();
-  $sql_context = new ModelContext(new MySqlModel($connection_instance));
-  $sql_context->setTableName('users');
-  echo json_encode($sql_context->getExecutionInstance()->selectAll("users")); 
+  $database = new Database();
+  $connection = $database->connect(); //HASTA AQUÍ FUNCIONA
+
+  $query = "SELECT * FROM users"; //TODO IMPLEMENTAR MODELOS
+
+  $data =  mysqli_query($connection,$query);
+
+  echo mysqli_num_rows($data);
 }

@@ -9,10 +9,10 @@ namespace App\Services;
 class Database{
 
     private $connection = null;
-    private $user =       null;
-    private $password =   null;
-    private $hostname =   null;
-    private $database =   null;
+    private $user       = null;
+    private $password   = null;
+    private $hostname   = null;
+    private $database   = null;
 
 
     public function __construct(){
@@ -24,14 +24,15 @@ class Database{
         $this->hostname = getenv('DB_HOSTNAME');
         $this->database = getenv('DB_DATABASE');
 
-        $this->connect();
     }
-
 
     public function connect(){
         $this->connection = mysqli_connect($this->hostname,$this->user,$this->password,$this->database);
-        if($this->connection == false){
-            echo "Error connecting to the database";
+        if($this->connection->error){
+            echo $this->connection->error;
+        }
+        else{
+            return $this->connection;
         }
     }
 

@@ -17,8 +17,11 @@ class MySqlModel implements ModelStrategy{
     }
 
     public function selectAll($table){
-        $query = "SELECT * FROM '". $table . "';";
-        return mysqli_query($this->conexion, $query);
+        $query = "SELECT * FROM ". $table . ";";
+        $data =  mysqli_query($this->conexion, $query);
+        if(!$data){
+            echo $this->conexion->error;
+        }
     }
 
     public function selectRow($table,$primary_key){
