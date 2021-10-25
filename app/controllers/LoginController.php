@@ -38,5 +38,4 @@ else{
   $sql_context = new ModelContext(new MySqlModel($conexion));
   $sql_context->setTableName('users');
   echo json_encode($sql_context->getExecutionInstance()->selectAll("users"));
-    
 }
