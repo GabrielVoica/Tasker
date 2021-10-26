@@ -31,6 +31,12 @@
 .login-page .login-page-panel-div-wrapper .login-page-panel-div:hover {
   transition: scale 2s linear;
 }
+.login-page .error {
+  color: red;
+  background: rgba(245, 64, 64, 0.253);
+  width: 100%;
+  height: 30px;
+}
 .login-page .form-wrapper {
   width: 100%;
   display: flex;

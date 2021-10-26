@@ -3,13 +3,13 @@
 namespace App\Models\ModelContexts;
 
 use App\Models\ModelStrategy;
+use Exception;
 use mysqli;
 
 include __DIR__ . "/../ModelStrategy.php";
 
 class MySqlModel implements ModelStrategy
 {
-
     private $connection;
     private $tableName;
     private $query;
@@ -17,16 +17,16 @@ class MySqlModel implements ModelStrategy
     private $limit;
     private $orderBy;
 
-    function __construct($connection){
+    function __construct($connection)
+    {
         $this->connection = $connection;
     }
 
-    function query($builder){
-        echo $builder->query;
-        return mysqli_query($this->connection,$builder->query);
+    function query($builder)
+    {
+        // echo $builder->query . '<br>';
+        return mysqli_query($this->connection, $builder->query);
     }
-
-
 }
 
 class Builder
@@ -38,18 +38,30 @@ class Builder
     private $orderBy;
     private $mainOperation;
 
-
     public function select($tableName)
     {
         $this->mainOperation = "SELECT * FROM " . $tableName;
         $this->tableName = $tableName;
     }
 
+    public function insert($tableName)
+    {
+        $this->mainOperation = "INSERT INTO " . $tableName;
+    }
+
+    public function values($values)
+    {
+        if(!strpos("INSERT",$this->mainOperation)){
+            throw new Exception('The main operation needs to be an insert if you add values');
+        }
+    }
+
     public function where($conditions)
     {
-        preg_match_all('/\{[a-zA-Z0-9=\(\)\?]+\}/', $conditions, $matches, PREG_SET_ORDER);
+        preg_match_all('/\{[a-zA-Z0-9=\?\@\.]+\}/', $conditions, $matches, PREG_SET_ORDER);
         $brackets = array('{', '}');
         $values = [];
+        $queryString = "";
 
         foreach ($matches as $matches_index) {
             $result = str_replace($brackets, ' ', $matches_index[0]);
@@ -59,7 +71,7 @@ class Builder
             $leftValue = str_replace('=', '', $leftValue[0][0]);
 
             $rightValue = null;
-            preg_match_all('/=[a-zA-Z0-9\'\?]+/', $result, $rightValue);
+            preg_match_all('/=[a-zA-Z0-9\'\?\@\.]+/', $result, $rightValue);
             $rightValue = str_replace('=', '', $rightValue[0][0]);
 
             $values[] = [$leftValue => $rightValue];
@@ -84,7 +96,8 @@ class Builder
     }
 
 
-    function build(){
+    function build()
+    {
         $this->query =  $this->mainOperation . $this->where;
     }
 

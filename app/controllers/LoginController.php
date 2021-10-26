@@ -32,18 +32,40 @@ if(empty($_POST)){
 //This block of code executes when the user makes a post to the login form
 else{
 
+  $mail = $_POST['mail'];
+  $password = $_POST['password'];
+  $mail_error = $password_error = null;
+
   $database = new Database();
   $connection = $database->connect(); 
   $data_context = new ModelContext(new MySqlModel($connection));
   $model = $data_context->getExecutionInstance();
-  $builder = new Builder();
 
+  $builder = new Builder();
   $builder->select('users');
-  $builder->where('{username=juan}');
+  $builder->where('{email=' . $mail . '}');
   $builder->build();
 
   $data = $model->query($builder);
+  $data_assoc = mysqli_fetch_assoc($data);
 
-  print_r(mysqli_num_rows($data));
 
+  if(mysqli_num_rows($data) == 0 || !$data){
+    $mail_error = "No email found";
+  }
+
+  if(mysqli_num_rows($data) == 0 || !password_verify($password,$data_assoc['password'])){
+    $password_error = "Incorrect password";
+  }
+
+
+  if(!isset($mail_error) && !isset($password_error)){
+    echo "User logged in!";
+  }
+  else{
+    echo $twig->render('login.html.twig',[
+      "mail_error"=>$mail_error,
+      "password_error" => $password_error
+    ]);
+  }
 }
