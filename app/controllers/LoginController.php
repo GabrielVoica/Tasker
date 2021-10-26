@@ -2,6 +2,7 @@
 
 use \App\Models\ModelContext;
 use App\Models\ModelContexts\MySqlModel;
+use \App\Models\ModelContexts\Builder;
 use App\Services\Database;
 
 include "../vendor/autoload.php";
@@ -30,12 +31,19 @@ if(empty($_POST)){
 }
 //This block of code executes when the user makes a post to the login form
 else{
+
   $database = new Database();
-  $connection = $database->connect(); //HASTA AQUÍ FUNCIONA
+  $connection = $database->connect(); 
+  $data_context = new ModelContext(new MySqlModel($connection));
+  $model = $data_context->getExecutionInstance();
+  $builder = new Builder();
 
-  $query = "SELECT * FROM users"; //TODO IMPLEMENTAR MODELOS
+  $builder->select('users');
+  $builder->where('{username=juan}');
+  $builder->build();
 
-  $data =  mysqli_query($connection,$query);
+  $data = $model->query($builder);
 
-  echo mysqli_num_rows($data);
+  print_r(mysqli_num_rows($data));
+
 }
