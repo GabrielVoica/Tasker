@@ -1,7 +1,7 @@
 
 # Tasker
 
-Tasker es un proyecto donde se implementa una tienda virtual donde se ofrecen servicios en lugar de productos. 
+Tasker es un proyecto que consiste en la implementación de una tienda virtual donde en lugar de ofrecer productos se ofrecen servicios.
 
 La documentacion será creada para especificar en profundidad las diferentes partes de la aplicación des de un punto de vista academico, proporcionando documentación para cada una de las funcionalidades implementadas. 
 
