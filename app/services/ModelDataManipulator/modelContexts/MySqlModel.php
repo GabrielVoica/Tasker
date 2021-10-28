@@ -24,7 +24,7 @@ class MySqlModel implements ModelStrategy
 
     function query($builder)
     {
-        // echo $builder->query . '<br>';
+        echo $builder->query . '<br>';
         return mysqli_query($this->connection, $builder->query);
     }
 }
@@ -37,6 +37,7 @@ class Builder
     private $limit;
     private $orderBy;
     private $mainOperation;
+    private $values;
 
     public function select($tableName)
     {
@@ -47,17 +48,52 @@ class Builder
     public function insert($tableName)
     {
         $this->mainOperation = "INSERT INTO " . $tableName;
+        $this->query = $this->query . $this->mainOperation;
     }
 
     public function values($values)
     {
-        if(!strpos("INSERT",$this->mainOperation)){
+        if (strpos($this->mainOperation, 'INSERT')) {
             throw new Exception('The main operation needs to be an insert if you add values');
         }
+        preg_match_all('/\{[a-zA-Z0-9=\(\)\?\@\.]+\}/', $values, $matches, PREG_SET_ORDER);
+        $brackets = array('{', '}');
+        $values = [];
+
+        foreach ($matches as $matches_index) {
+            $result = str_replace($brackets, ' ', $matches_index[0]);
+            $leftValue = null;
+            preg_match_all('/[a-zA-Z0-9\']+\=/', $result, $leftValue);
+            $leftValue = str_replace('=', '', $leftValue[0][0]);
+            $rightValue = null;
+            preg_match_all('/=[a-zA-Z0-9\'\?\@\.]+/', $result, $rightValue);
+            $rightValue = str_replace('=', '', $rightValue[0][0]);
+            $values[] = [$leftValue => $rightValue];
+        }
+
+        $leftQueryString = "(";
+        $rightQueryString = " VALUES (";
+        $count = count($values);
+        $i = 0;
+
+        foreach ($values as $value) {
+            $keys = array_keys($value);
+            if ($i < $count - 1) {
+                $leftQueryString = $leftQueryString . $keys[0] . ',';
+                $rightQueryString = $rightQueryString . $this->checkIfNumberOrString($value[$keys[0]]) . ',';
+                $i++;
+            } else {
+                $leftQueryString = $leftQueryString . $keys[0] . ')';
+                $rightQueryString = $rightQueryString . $this->checkIfNumberOrString($value[$keys[0]]) . ')';
+            }
+        }
+
+        $this->values =  $leftQueryString . $rightQueryString;
     }
 
     public function where($conditions)
     {
+        $matches = null;
         preg_match_all('/\{[a-zA-Z0-9=\?\@\.]+\}/', $conditions, $matches, PREG_SET_ORDER);
         $brackets = array('{', '}');
         $values = [];
@@ -98,7 +134,7 @@ class Builder
 
     function build()
     {
-        $this->query =  $this->mainOperation . $this->where;
+        $this->query =  $this->mainOperation . ($this->where ? $this->where : '') . ($this->values ? $this->values : '');
     }
 
 

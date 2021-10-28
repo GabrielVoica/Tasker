@@ -10,14 +10,22 @@
 </div>
 
 <div class="form-wrapper">
-	{{mail_error}}
-	{{password_error}}
 	<form action="" method="post" class="login-form">
-	<label for="mail">Correo</label>
-	<input type="mail" name="mail"></input>
+		<label for="mail">Correo</label>
+		<input type="mail" name="mail"></input>
+
+	{% if mail_error %}
+		<p>{{mail_error}}</p>
+	{% endif %}
+
 	<i class="fas fa-user"></i>
 	<label for="password">Contraseña</label>
 	<input type="password" name="password">
+
+	{% if password_error %}
+		<p>{{password_error}}</p>
+	{% endif %}
+
 	<i class="fas fa-key"></i>
 	<input class="submit" type="submit">
 </form>
