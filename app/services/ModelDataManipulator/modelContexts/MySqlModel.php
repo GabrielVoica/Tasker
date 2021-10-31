@@ -24,7 +24,6 @@ class MySqlModel implements ModelStrategy
 
     function query($builder)
     {
-        echo $builder->query . '<br>';
         return mysqli_query($this->connection, $builder->query);
     }
 }
@@ -56,7 +55,10 @@ class Builder
         if (strpos($this->mainOperation, 'INSERT')) {
             throw new Exception('The main operation needs to be an insert if you add values');
         }
-        preg_match_all('/\{[a-zA-Z0-9=\(\)\?\@\.]+\}/', $values, $matches, PREG_SET_ORDER);
+
+        $this->where = null;
+
+        preg_match_all('/\{[a-zA-Z0-9=\(\)\?\@\.\$\/]+\}/', $values, $matches, PREG_SET_ORDER);
         $brackets = array('{', '}');
         $values = [];
 
@@ -66,7 +68,7 @@ class Builder
             preg_match_all('/[a-zA-Z0-9\']+\=/', $result, $leftValue);
             $leftValue = str_replace('=', '', $leftValue[0][0]);
             $rightValue = null;
-            preg_match_all('/=[a-zA-Z0-9\'\?\@\.]+/', $result, $rightValue);
+            preg_match_all('/=[a-zA-Z0-9\'\?\@\.\$\/]+/', $result, $rightValue);
             $rightValue = str_replace('=', '', $rightValue[0][0]);
             $values[] = [$leftValue => $rightValue];
         }
@@ -94,7 +96,7 @@ class Builder
     public function where($conditions)
     {
         $matches = null;
-        preg_match_all('/\{[a-zA-Z0-9=\?\@\.]+\}/', $conditions, $matches, PREG_SET_ORDER);
+        preg_match_all('/\{[a-zA-Z0-9=\?\@\.\_\$]+\}/', $conditions, $matches, PREG_SET_ORDER);
         $brackets = array('{', '}');
         $values = [];
         $queryString = "";
@@ -107,10 +109,11 @@ class Builder
             $leftValue = str_replace('=', '', $leftValue[0][0]);
 
             $rightValue = null;
-            preg_match_all('/=[a-zA-Z0-9\'\?\@\.]+/', $result, $rightValue);
+            preg_match_all('/=[a-zA-Z0-9\'\?\@\.\$\_]+/', $result, $rightValue);
             $rightValue = str_replace('=', '', $rightValue[0][0]);
 
             $values[] = [$leftValue => $rightValue];
+
 
             $queryString = " WHERE ";
 

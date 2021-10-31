@@ -26,45 +26,47 @@ $data->connect();
 
 
 //If the petition is not for logging in, the login view is shown
-if(empty($_POST)){
-  echo $twig->render('login.html.twig',["var"=>"Hello"]);
+if (empty($_POST)) {
+  echo $twig->render('login.html.twig', ["var" => "Hello"]);
 }
 //This block of code executes when the user makes a post to the login form
-else{
-
+else {
   $mail = $_POST['mail'];
   $password = $_POST['password'];
   $mail_error = $password_error = null;
 
   $database = new Database();
-  $connection = $database->connect(); 
+  $connection = $database->connect();
   $data_context = new ModelContext(new MySqlModel($connection));
   $model = $data_context->getExecutionInstance();
 
-  $builder = new Builder();
-  $builder->select('users');
-  $builder->where('{email=' . $mail . '}');
-  $builder->build();
 
-  $data = $model->query($builder);
-  $data_assoc = mysqli_fetch_assoc($data);
+  if ($mail != null && $password != null) {
+    $builder = new Builder();
+    $builder->select('users');
+    $builder->where('{email=' . $mail . '}');
+    $builder->build();
 
+    $data = $model->query($builder);
+    $data_assoc = mysqli_fetch_assoc($data);
 
-  if(mysqli_num_rows($data) == 0 || !$data){
-    $mail_error = "No email found";
+    if (mysqli_num_rows($data) == 0) {
+      $mail_error = "No account found";
+    } else if (!preg_match('/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/', $mail)) {
+      $mail_error = "The email format is not correct";
+    } else if (!password_verify($password, $data_assoc['passw'])) {
+      $password_error = "Incorrect password";
+    }
+  } else {
+    $mail_error = "Missing fields";
   }
 
-  if(mysqli_num_rows($data) == 0 || !password_verify($password,$data_assoc['password'])){
-    $password_error = "Incorrect password";
-  }
 
-
-  if(!isset($mail_error) && !isset($password_error)){
-    echo "User logged in!";
-  }
-  else{
-    echo $twig->render('login.html.twig',[
-      "mail_error"=>$mail_error,
+  if (!isset($mail_error) && !isset($password_error)) {
+    echo $twig->render('home.html.twig');
+  } else {
+    echo $twig->render('login.html.twig', [
+      "mail_error" => $mail_error,
       "password_error" => $password_error
     ]);
   }

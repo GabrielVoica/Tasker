@@ -32,7 +32,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => 'e631c2f31286f9eb3fffed9ff199d6f0285edb54',
+    'reference' => '9c4810bcb9405db47d5b1b3b154a0cd7948a49e2',
     'name' => '__root__',
   ),
   'versions' => 
@@ -44,7 +44,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => 'e631c2f31286f9eb3fffed9ff199d6f0285edb54',
+      'reference' => '9c4810bcb9405db47d5b1b3b154a0cd7948a49e2',
     ),
     'phpoption/phpoption' => 
     array (
