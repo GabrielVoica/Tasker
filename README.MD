@@ -8,12 +8,12 @@ La documentacion será creada para especificar en profundidad las diferentes par
 
 # Estructura de ficheros
 
-La estructura de ficheros implementa varias funcionalidades inspiradas por el framework de Laravel. Algunas de las funcionalidades son un router propio, una estructura de vistas basada en plantillas, el uso de variables de entorno para asignar los datos sensibles (contraseñas bases de datos, usuarios, etc...).
+La estructura de ficheros implementa varias funcionalidades inspiradas por el framework de Laravel. Algunas de las funcionalidades son un router propio, una estructura de vistas basada en plantillas, el uso de variables de entorno para asignar los datos sensibles (contraseñas bases de datos, usuarios, etc...) y  la implementación de un pequeño ORM propio.
 
 La estructura se basa principalmente en el patron MVC, y esta pensado para facilitar la escalabilidad de la plataforma. 
 
 
-# Diseño
+# Diseño del software
 
 El diseño interno de la plataforma es el punto más fuerte del proyecto. Esta pensando para ser escalable, mantanible y facilmente editable. Esto se consigue con la implementación de distintos patrones de diseño para crear una jerarquía de clases estable y armonica.
 
@@ -29,4 +29,8 @@ Por eso opté por implementar el patron de diseño Strategy, y pasarle a la inst
 ## Instanciando la base de datos usando un Singleton
 Este punto podría llegar a considerarse overkill debido a que no es un problema realmente que necesite esta implementación, pero me parecio buena idea para ahorrar recursos en tiempo de ejecución. La clase encargada de la conexion a la base de datos debe instanciarse individualmente en cada fichero, por lo que me parecio un gasto de recursos innecesario. Decidí que para solventar esto podría implementar un Singleton que se ocupase de que la instancia fuese única y se compartiese por todo el programa. Esto evita que se creen objetos de más y mejora un poco el tiempo de carga de la web (es un valor relativamente pequeño pero aún así decidí implementarlo).
 
+
+# Diseño de la web
+
+Todo la parte visual del proyecto ha sido diseñada y maquetada por mi, no he usado ninguna libreria de terceros para los estilos (Bootstrap, Tailwind, etc..) y para organizar mejor los estilos he utilizado Sass, para separar mejor el código y también hacerlo mas leíble
 
