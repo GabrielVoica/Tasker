@@ -32,5 +32,5 @@ Este punto podría llegar a considerarse overkill debido a que no es un problema
 
 # Diseño de la web
 
-Todo la parte visual del proyecto ha sido diseñada y maquetada por mi, no he usado ninguna libreria de terceros para los estilos (Bootstrap, Tailwind, etc..) y para organizar mejor los estilos he utilizado Sass, para separar mejor el código y también hacerlo mas leíble
+Todo la parte visual del proyecto ha sido diseñada y maquetada por mi, no he usado ninguna libreria de terceros para los estilos (Bootstrap, Tailwind, etc..) y para organizar mejor los estilos he utilizado Sass, para separar mejor el código y también hacerlo mas leíble.
 
