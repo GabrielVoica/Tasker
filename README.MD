@@ -15,6 +15,13 @@ La estructura se basa principalmente en el patron MVC, y esta pensado para facil
 
 # Diseño
 
+El diseño interno de la plataforma es el punto más fuerte del proyecto. Esta pensando para ser escalable, mantanible y facilmente editable. Esto se consigue con la implementación de distintos patrones de diseño para crear una jerarquía de clases estable y armonica.
+
+## El patrón Strategy y las diferentes implementaciones para cada tipo de base de datos.
+
+Uno de los problemas que me encontre en el desarrollo del proyecto fue como añadir funcionalidad para cada tipo de base de datos. Las operaciones son efectuadas a traves de un ORM y definir los diferentes algoritmos para cada tipo de base de datos (SQL y NoSql) sin una estructura previa me parecio una mala idea, porque podria acabar en código repetido, mal organizado y poco escalable. 
+
+Por eso opté por implementar el patron de diseño Strategy, y pasarle a la instancia de este diferentes classes con el mismo tipo pero implementaciones diferentes dependiendo del tipo de base de datos que se necesite. La base de datos se define en el fichero .env y el cliente solamente necesita instanciar la clase que se ocupa de manejar los datos. 
 
 
 
