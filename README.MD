@@ -13,11 +13,8 @@ La estructura de ficheros implementa varias funcionalidades inspiradas por el fr
 La estructura se basa principalmente en el patron MVC, y esta pensado para facilitar la escalabilidad de la plataforma. 
 
 
-# Arquitectura
+# Diseño
 
 
-
-
-Work in process....
 
 
