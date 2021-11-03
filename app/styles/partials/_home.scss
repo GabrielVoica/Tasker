@@ -1,0 +1,88 @@
+.home-page {
+  background: rgb(255, 255, 255);
+  font-family: "Roboto";
+}
+
+.navbar {
+  height: 80px;
+  background: rgb(57, 49, 221);
+  background: linear-gradient(
+    90deg,
+    rgb(55, 51, 169) 0%,
+    rgb(62, 91, 255) 35%,
+    rgb(35, 149, 255) 100%
+  );
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+
+  .navbar-header {
+    width: 100%;
+    padding-left: 25px;
+    font-size: 40px;
+    line-height: 0.4;
+    color: white;
+    cursor: default;
+  }
+
+  .user-info {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    width: 100px;
+    align-items: center;
+    position: relative;
+
+    &:hover .user-actions {
+      display: block;
+      animation: appear-user-info 0.2s forwards;
+    }
+    .user-actions {
+      position: absolute;
+      right: 68px;
+      top: 13px;
+      width: 200px;
+      height: 400px;
+      background: linear-gradient(
+        140deg,
+        rgb(87, 186, 206) 0%,
+        rgb(91, 232, 182) 30%,
+        rgb(162, 223, 235) 60%
+      );
+      display: none;
+      opacity: 0;
+      box-shadow: -1px 2px 5px 0px #0000002e;
+    }
+
+    .user-pic {
+      height: 45px;
+      width: 45px;
+      border-radius: 2px;
+      cursor: pointer;
+      background: rgb(255, 255, 255);
+      padding: 5px;
+    }
+  }
+
+  .logout {
+    text-decoration: none;
+    color: white;
+    height: 100%;
+    width: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial;
+    font-size: 13px;
+    background: rgba(255, 255, 255, 0.323);
+  }
+}
+
+@keyframes appear-user-info {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

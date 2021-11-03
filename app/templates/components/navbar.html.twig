@@ -1,0 +1,22 @@
+<nav class="navbar">
+	<h1 class="navbar-header">TASKER</h1>
+	<div class="user-info">
+		{% if user_pic_uri %}
+			<img src="{{user_pic_uri}}">
+		{% else %}
+			<img class="user-pic" src="https://avatars.dicebear.com/api/initials/{{username}}.svg">
+		{% endif %}
+		<div class="user-actions">
+			<li>
+				<a href="perfil">Perfil</a>
+			</li>
+			<li>
+				<a href="servicios">Lista servicios</a>
+			</li>
+			<li>
+				<a href="logout">Cerrar sessióna</a>
+			</li>
+		</div>
+	</div>
+
+</nav>

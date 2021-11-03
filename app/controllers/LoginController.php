@@ -12,6 +12,10 @@ require __DIR__ . "/../services/ModelDataManipulator/ModelContext.php";
 
 session_start();
 
+if (isset($_SESSION['logged']) && $_SESSION['logged'] = true) {
+  header('location: /');
+}
+
 /**
  * Twig template loader
  * 
@@ -63,7 +67,11 @@ else {
 
 
   if (!isset($mail_error) && !isset($password_error)) {
-    echo $twig->render('home.html.twig');
+
+    $_SESSION['logged'] = true;
+    $_SESSION['username'] = $data_assoc['username'];
+
+    header('location: /');
   } else {
     echo $twig->render('login.html.twig', [
       "mail_error" => $mail_error,
