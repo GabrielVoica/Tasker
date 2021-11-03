@@ -34,6 +34,6 @@ Este punto podría llegar a considerarse overkill debido a que no es un problema
 
 Todo la parte visual del proyecto ha sido diseñada y maquetada por mi, no he usado ninguna libreria de terceros para los estilos (Bootstrap, Tailwind, etc..) y para organizar mejor los estilos he utilizado Sass, separando mejor el código y también haciendolo más leíble.
 
-Las imagenes están optimizadas al máximo para evitar tiempos de carga excesivos o problemas con las composite layers del navegador.
+Las imagenes estaticas están optimizadas al máximo para evitar tiempos de carga excesivos o problemas con las composite layers del navegador.
 
 
