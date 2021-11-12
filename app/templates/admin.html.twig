@@ -1,0 +1,32 @@
+{% include 'partials/header.html.twig' with {'pageTitle': 'Home', 'bodyClass': 'admin-page'} %}
+{% include 'components/navbar.html.twig' %}
+
+
+<section class="admin-sql">
+	<textarea name="query" placeholder="SELECT * FROM...." type="textarea" class="textarea" form="admin-form"></textarea>
+	<form method="POST" action="admin" class="admin-sql-form" id="admin-form">
+		<input type="submit" class="submit">
+	</form>
+
+	{% if sql_result %}
+		<table>
+			{% for row in sql_result %}
+				<tr>
+					{% for column in row %}
+						<td>{{ column }}</td>
+					{% endfor %}
+				</tr>
+			{% endfor %}
+		</table>
+	{% elseif sql_result_string %}
+
+		<p class="sql-success">{{sql_result_string}}</p>
+
+	{% elseif sql_error %}
+		<p class="sql-error">{{sql_error}}</p>
+		{% else %}
+
+	{% endif %}
+</section>
+
+{% include 'partials/footer.html.twig' %}

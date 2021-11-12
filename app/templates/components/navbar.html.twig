@@ -1,5 +1,4 @@
 <nav class="navbar">
-	<h1 class="navbar-header">TASKER</h1>
 	<div class="user-info">
 		{% if user_pic_uri %}
 			<img src="{{user_pic_uri}}">
@@ -8,15 +7,30 @@
 		{% endif %}
 		<div class="user-actions">
 			<li>
+				<i class="fa fa-user fa-1x" aria-hidden="true"></i>
 				<a href="perfil">Perfil</a>
 			</li>
+			{% if is_admin == 1 %}
+				<li class="admin-tab">
+					<i class="fa fa-user-plus" aria-hidden="true"></i>
+					<a href="admin">Opciones de administrador</a>
+				</li>
+				{% else %}
+
+			{% endif %}
 			<li>
-				<a href="servicios">Lista servicios</a>
-			</li>
-			<li>
-				<a href="logout">Cerrar sessióna</a>
+				<i class="fas fa-sign-out-alt fa-1x"></i>
+				<a href="logout">Cerrar sesión</a>
 			</li>
 		</div>
 	</div>
+	<div class="brand-wrapper">
+		<a class="home-link" href="/"></a>
+		<div class="page-brand"></div>
+	</div>
 
+	<div class="task-currency">
+		{{taskers}}
+		<i class="fas fa-tenge fa-1x"></i>
+	</div>
 </nav>

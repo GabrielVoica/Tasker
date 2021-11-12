@@ -9,3 +9,7 @@ login:
 register:
   route: "/register"
   controller: "controllers/RegisterController.php"
+
+admin:
+  route: "/admin"
+  controller: "controllers/AdminController.php"

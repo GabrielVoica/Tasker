@@ -87,7 +87,7 @@ if (empty($_POST)) {
 
     $password_hash = password_hash($password, PASSWORD_DEFAULT);
     $builder->insert('users');
-    $builder->values('{username=' . $username . '}{email=' . $email . '}{passw=' . $password_hash . '}{isAdmin=false}');
+    $builder->values('{username=' . $username . '}{email=' . $email . '}{passw=' . $password_hash . '}{isAdmin=false}{taskers=0}');
     $builder->build();
 
     $data = $model->query($builder);

@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Controllers;
+
 use \App\Models\ModelContext;
 use App\Models\ModelContexts\MySqlModel;
 use \App\Models\ModelContexts\Builder;
@@ -61,15 +63,17 @@ else {
     } else if (!password_verify($password, $data_assoc['passw'])) {
       $password_error = "Incorrect password";
     }
-  } else {
+  } 
+  else {
     $mail_error = "Missing fields";
   }
-
 
   if (!isset($mail_error) && !isset($password_error)) {
 
     $_SESSION['logged'] = true;
     $_SESSION['username'] = $data_assoc['username'];
+    $_SESSION['isAdmin'] = $data_assoc['isAdmin'];
+    $_SESSION['taskers'] = $data_assoc['taskers'];
 
     header('location: /');
   } else {

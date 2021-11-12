@@ -7,9 +7,9 @@ $panel-width: 64px;
   background: rgb(179, 224, 255);
   background: radial-gradient(
     circle,
-    rgba(179, 224, 255, 1) 0%,
-    rgba(71, 228, 195, 1) 35%,
-    rgba(19, 104, 205, 1) 100%
+    #f58402,
+    #ffae00 60%,
+    #ff7b00
   );
   display: flex;
   justify-content: center;
@@ -81,7 +81,7 @@ $panel-width: 64px;
       }
 
       .img-div {
-        background: url("../../assets/login.jpeg");
+        background: url("../../assets/login.jpg");
         background-size: cover;
 
         @media (max-width: 1200px) {
@@ -141,12 +141,11 @@ $panel-width: 64px;
           background: transparent;
           color: white;
           text-transform: uppercase;
-          box-shadow: 4px 4px 7px 0px #476f75;
-          border: 1px solid gray;
+          box-shadow: 4px 4px 7px 0px #476f756e;
           position: relative;
           width: 300px;
           border-radius: 20px;
-          background: rgb(72, 72, 248);
+          background: rgb(255, 208, 0);
 
           &:hover {
             animation: move-shadow 0.1s forwards linear;
@@ -165,9 +164,9 @@ $panel-width: 64px;
 @for $i from 0 to 6 {
   .login-page-panel-div:nth-child(#{$i + 1}) {
     --left: #{$panel-width * $i * -1};
-    --hue: #{0 - (40 * $i)};
-    --hue2: #{50 - (40 * $i)};
-    --hue3: #{150 - (40 * $i)};
+    --hue: #{0 + (1 * $i)};
+    --hue2: #{0 + (1 * $i)};
+    --hue3: #{0 + (1 * $i)};
     --delay: #{$i * 0.1s};
   }
 }
