@@ -872,15 +872,16 @@
 
 .home-content {
   width: calc(100vw - 430px);
-  height: 750px;
-  background: #fcfdef;
+  height: 785px;
   position: absolute;
   margin: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.267);
+  background: #fab973;
   border-radius: 6px;
+  backdrop-filter: blur(10px);
 }
 .home-content .searcher {
   width: 100%;
@@ -921,7 +922,6 @@
   right: 0px;
   background: white;
   border-radius: 0px 20px 20px 0px;
-  cursor: pointer;
   border: 1px solid rgba(199, 199, 199, 0.116);
   color: rgba(51, 51, 51, 0.699);
   font-size: 28px;
@@ -970,25 +970,40 @@
   height: 610px;
   background: white;
   border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   border: 1px solid rgba(0, 0, 0, 0.13);
   box-shadow: 0px 2px 5px 5px rgba(0, 0, 0, 0.068);
+  overflow-y: scroll;
 }
 .home-content .task-list .task-item {
-  width: 99%;
-  height: 80px;
+  width: 99.5%;
+  height: 87px;
   border-radius: 10px;
   background: white;
   display: flex;
   display: flex;
   align-items: center;
-  margin: 1px;
   position: relative;
   background: linear-gradient(180deg, rgba(139, 139, 139, 0.062) 40%, white);
-  border: 2px solid rgba(0, 0, 0, 0.034);
   position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 4px;
+}
+.home-content .task-list .task-item.sport {
+  background: url("../../assets/textures/sport.png");
+}
+.home-content .task-list .task-item.productivity {
+  background: url("../../assets/textures/productivity.png");
+}
+.home-content .task-list .task-item.food {
+  background: url("../../assets/textures/food.png");
+  background-size: 100%;
+  background-position: 20px;
+}
+.home-content .task-list .task-item.guilty-pleasures {
+  background: url("../../assets/textures/guilty-pleasures.png");
+  background-size: 100%;
+  background-position: 20px;
 }
 .home-content .task-list .task-item:hover:before {
   width: 100%;
@@ -1002,7 +1017,8 @@
   top: 0;
   left: 0;
   border-radius: 6px;
-  background: linear-gradient(0deg, #fbdec5 0%, #fffdd3 99%);
+  background: rgba(255, 255, 255, 0.582);
+  z-index: 1;
 }
 .home-content .task-list .task-item .task-level {
   width: 120px;
@@ -1032,40 +1048,48 @@
 .home-content .task-list .task-item .add-task input {
   width: 100%;
   height: 100%;
-  background: white;
+  background: rgba(255, 255, 255, 0.445);
+  backdrop-filter: blur(10px);
   border: none;
   cursor: pointer;
   font-size: 35px;
-  color: black;
+  color: white;
   border-top-left-radius: 6px;
   border-bottom-left-radius: 6px;
 }
 .home-content .task-list .task-item .task-title {
   height: 80%;
   box-shadow: 0px 0px 5px 3px rgba(230, 77, 6, 0.048);
-  background: white;
-  color: black;
-  font-size: 22px;
+  color: white;
+  font-size: 24px;
   display: flex;
   justify-content: center;
+  background: rgba(255, 255, 255, 0.205);
+  backdrop-filter: blur(10px);
   align-items: center;
   padding: 0px 20px;
+  font-family: "Josefin Sans", sans-serif;
+  box-shadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.151);
+  font-weight: 551;
   margin-left: 10px;
-  font-family: Arial, Helvetica, sans-serif;
+  border-radius: 6px;
   z-index: 2;
 }
 .home-content .task-list .task-item .task-description {
   height: 80%;
   box-shadow: 0px 0px 5px 3px rgba(230, 77, 6, 0.048);
-  color: black;
+  color: white;
   font-size: 22px;
   font-weight: 800;
+  box-shadow: 0px 0px 7px 3px rgba(0, 0, 0, 0.151);
+  border-radius: 6px;
   display: flex;
   justify-content: center;
+  background: rgba(255, 255, 255, 0.205);
+  backdrop-filter: blur(10px);
   align-items: center;
   padding: 0px 20px;
   margin-left: 10px;
-  background: white;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
   z-index: 2;
 }
@@ -1090,7 +1114,7 @@
   background: rgba(114, 255, 114, 0.856);
 }
 .home-content .task-list .task-item .task-cost.negative {
-  background: #ff6363;
+  background: #f73e3e;
 }
 .home-content .task-list .task-item p {
   margin: 0;
@@ -1116,6 +1140,21 @@ html {
   box-sizing: border-box;
   background: url("../../assets/textures/page.png");
 }
+body ::-webkit-scrollbar,
+html ::-webkit-scrollbar {
+  width: 5px;
+  /* width of the entire scrollbar */
+  border-radius: 6px;
+}
+body ::-webkit-scrollbar-thumb,
+html ::-webkit-scrollbar-thumb {
+  background-color: rgba(192, 192, 192, 0.582);
+  /* color of the scroll thumb */
+  border-radius: 6px;
+  /* roundness of the scroll thumb */
+  border: 3px solid rgba(192, 192, 192, 0.562);
+  /* creates padding around scroll thumb */
+}
 
 .error {
   height: 15px;
@@ -1135,6 +1174,29 @@ html {
   width: 300px;
   font-size: 0.8em;
   margin: 0;
+}
+
+.user-profile .user-content {
+  width: 100%;
+  height: 100%;
+  background: white;
+  display: flex;
+  flex-direction: column;
+}
+.user-profile .user-content .user-image {
+  width: 300px;
+  height: 300px;
+  background: black;
+}
+.user-profile .user-content .picture-form {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+.user-profile .user-content .change-username {
+  width: 450px;
+  height: 50px;
+  font-size: 22px;
 }
 
 /*# sourceMappingURL=styles.css.map */

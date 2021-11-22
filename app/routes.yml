@@ -13,3 +13,7 @@ register:
 admin:
   route: "/admin"
   controller: "controllers/AdminController.php"
+
+user:
+  route: "/perfil"
+  controller: "controllers/UserProfileController.php"

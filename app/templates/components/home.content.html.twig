@@ -1,56 +1,97 @@
-<section class="home-content">
+{% if search == null %}
+	<section class="home-content">
+
+		<form class="searcher">
+			<input class="search-bar" placeholder="Buscar...">
+			<div class="search-button" value=""></div>
+			<i class="fas fa-search"></i>
+		</form>
 
 
-	<form class="searcher">
-		<input class="search-bar" placeholder="Buscar...">
-		<input type="submit" class="search-button" value="">
-		<i class="fas fa-search"></i>
-	</form>
+		<div class="actions">
+			<button class="action good-task-switcher">Positivas</button>
+			<button class="action bad-task-switcher">Negativas</button>
+			<select>
+				<option>Categoria</option>
+			</select>
+		</div>
 
-	<div class="actions">
-		<button class="action good-task-switcher">Positivas</button>
-		<button class="action bad-task-switcher">Negativas</button>
-		<select>
-			<option>Categoria</option>
-		</select>
-	</div>
+		<div class="task-list">
+			{% for i in 0..num_of_tasks %}
+				<div class="task-item {{task_list[i][12]}}">
+					<form class="add-task" method="GET" action="/home">
+						<input type="submit" value="+">
+					</form>
+					<p class="task-title">{{task_list[i][1]}}</p>
+					<span class="task-description">{{task_list[i][2]}}</span>
 
-	<div class="task-list">
-		{% for row in task_list %}
-			<div class="task-item">
+					{% if task_list[i][4] == 1 %}
+						<span class="task-cost positive">+
+							{{task_list[i][3]}}
+							T</span>
 
-				<form class="add-task">
-					<input type="submit" value="+">
-				</form>
-				<p class="task-title">{{row[1]}}</p>
-				<span class="task-description">{{row[2]}}</span>
+					{% elseif task_list[i][4] == 0 %}
+						<span class="task-cost negative">-
+							{{task_list[i][3]}}
+							T</span>
+					{% endif %}
+
+					{% if task_list[i][6] == 1 %}
+						<span class="task-level one" style="background: {{task_list[i][11]}}">
+							<p class="task-category">{{task_list[i][9]}}</p>
+						</span>
+					{% elseif task_list[i][6] == 2 %}
+						<span class="task-level two" style="background: {{task_list[i][11]}}">
+							<p class="task-category">{{task_list[i][9]}}</p>
+						</span>
+					{% elseif task_list[i][6] == 3 %}
+						<span class="task-level three" style="background: {{task_list[i][11]}}">
+							<p class="task-category">{{task_list[i][9]}}</p>
+						</span>
+					{% endif %}
+				</div>
+			{% endfor %}
+		</div>
+	</section>
 
 
-				{% if row[4] == 1 %}
-					<span class="task-cost positive">+
-						{{row[3]}}
-						T</span>
+{% elseif search != null and num_of_tasks > 0 %}
+	{% for i in 0..(num_of_tasks-1) %}
+		<div class="task-item {{task_list[i][12]}}">
+			<form class="add-task" method="GET" action="/home">
 
-				{% elseif row[4] == 0 %}
-					<span class="task-cost negative">-
-						{{row[3]}}
-						T</span>
-				{% endif %}
+				<input type="submit" value="+">
+			</form>
 
-				{% if row[6] == 1 %}
-					<span class="task-level one" style="background: {{row[11]}}">
-						<p class="task-category">{{row[9]}}</p>
-					</span>
-				{% elseif row[6] == 2 %}
-					<span class="task-level two" style="background: {{row[11]}}">
-						<p class="task-category">{{row[9]}}</p>
-					</span>
-				{% elseif row[6] == 3 %}
-					<span class="task-level three" style="background: {{row[11]}}">
-						<p class="task-category">{{row[9]}}</p>
-					</span>
-				{% endif %}
-			</div>
-		{% endfor %}
-	</div>
-</section>
+			<p class="task-title">{{task_list[i][1]}}</p>
+			<span class="task-description">{{task_list[i][2]}}</span>
+
+
+			{% if task_list[i][4] == 1 %}
+				<span class="task-cost positive">+
+					{{task_list[i][3]}}
+					T</span>
+
+			{% elseif task_list[i][4] == 0 %}
+				<span class="task-cost negative">-
+					{{task_list[i][3]}}
+					T</span>
+			{% endif %}
+
+			{% if task_list[i][6] == 1 %}
+				<span class="task-level one" style="background: {{task_list[i][11]}}">
+					<p class="task-category">{{task_list[i][9]}}</p>
+				</span>
+			{% elseif task_list[i][6] == 2 %}
+				<span class="task-level two" style="background: {{task_list[i][11]}}">
+					<p class="task-category">{{task_list[i][9]}}</p>
+				</span>
+			{% elseif task_list[i][6] == 3 %}
+				<span class="task-level three" style="background: {{task_list[i][11]}}">
+					<p class="task-category">{{task_list[i][9]}}</p>
+				</span>
+			{% endif %}
+		</div>
+	{% endfor %}
+
+{% endif %}

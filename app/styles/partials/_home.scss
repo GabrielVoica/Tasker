@@ -40,7 +40,6 @@
     .user-actions {
       position: absolute;
       left: -20px;
-
       top: 80px;
       width: 0px;
       height: 91.5vh;
@@ -253,15 +252,17 @@
 
 .home-content {
   width: calc(100vw - 430px);
-  height: 750px;
-  background: rgb(252, 253, 239);
+  height: 785px;
   position: absolute;
   margin: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.267);
+  background: rgb(250, 185, 115);
   border-radius: 6px;
+  backdrop-filter: blur(10px);
+
 
   .searcher {
     width: 100%;
@@ -304,7 +305,6 @@
       right: 0px;
       background: rgb(255, 255, 255);
       border-radius: 0px 20px 20px 0px;
-      cursor: pointer;
       border: 1px solid rgba(199, 199, 199, 0.116);
       color: rgba(51, 51, 51, 0.699);
       font-size: 28px;
@@ -358,28 +358,51 @@
     height: 610px;
     background: rgb(255, 255, 255);
     border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     border: 1px solid rgba(0, 0, 0, 0.13);
     box-shadow: 0px 2px 5px 5px rgba(0, 0, 0, 0.068);
+    overflow-y: scroll;
 
     .task-item {
-      width: 99%;
-      height: 80px;
+      width: 99.5%;
+      height: 87px;
       border-radius: 10px;
       background: rgb(255, 255, 255);
       display: flex;
       display: flex;
       align-items: center;
-      margin: 1px;
       position: relative;
-      background: linear-gradient(180deg, rgba(139, 139, 139, 0.062) 40%, rgb(255, 255, 255));
-      border: 2px solid rgba(0, 0, 0, 0.034);
+      background: linear-gradient(
+        180deg,
+        rgba(139, 139, 139, 0.062) 40%,
+        rgb(255, 255, 255)
+      );
       position: relative;
+      background-repeat: no-repeat;
+      background-size: cover;
+      margin: 4px;
+
+      &.sport {
+        background: url("../../assets/textures/sport.png");
+      }
+
+      &.productivity {
+        background: url("../../assets/textures/productivity.png");
+      }
+
+      &.food {
+        background: url("../../assets/textures/food.png");
+        background-size: 100%;
+        background-position: 20px;
+      }
+
+      &.guilty-pleasures {
+        background: url("../../assets/textures/guilty-pleasures.png");
+        background-size: 100%;
+        background-position: 20px;
+      }
 
       &:hover:before {
-          width: 100%;
+        width: 100%;
       }
 
       &:before {
@@ -391,9 +414,9 @@
         top: 0;
         left: 0;
         border-radius: 6px;
-        background: linear-gradient(0deg, rgba(251,222,197,1) 0%, rgba(255,253,211,1) 99%);
+        background: rgba(255, 255, 255, 0.582);
+        z-index: 1;
       }
-
       .task-level {
         width: 120px;
         height: 40px;
@@ -424,12 +447,12 @@
         input {
           width: 100%;
           height: 100%;
-          background: white;
-
+          background: rgba(255, 255, 255, 0.445);
+          backdrop-filter: blur(10px);
           border: none;
           cursor: pointer;
           font-size: 35px;
-          color: black;
+          color: rgb(255, 255, 255);
           border-top-left-radius: 6px;
           border-bottom-left-radius: 6px;
         }
@@ -438,30 +461,37 @@
       .task-title {
         height: 80%;
         box-shadow: 0px 0px 5px 3px rgba(230, 77, 6, 0.048);
-        background: rgb(255, 255, 255);
-        color: black;
-        font-size: 22px;
+        color: white;
+        font-size: 24px;
         display: flex;
         justify-content: center;
+        background: rgba(255, 255, 255, 0.205);
+        backdrop-filter: blur(10px);
         align-items: center;
         padding: 0px 20px;
+        font-family: "Josefin Sans", sans-serif;
+        box-shadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.151);
+        font-weight: 551;
         margin-left: 10px;
-        font-family: Arial, Helvetica, sans-serif;
+        border-radius: 6px;
         z-index: 2;
       }
 
       .task-description {
         height: 80%;
         box-shadow: 0px 0px 5px 3px rgba(230, 77, 6, 0.048);
-        color: black;
+        color: white;
         font-size: 22px;
         font-weight: 800;
+        box-shadow: 0px 0px 7px 3px rgba(0, 0, 0, 0.151);
+        border-radius: 6px;
         display: flex;
         justify-content: center;
+        background: rgba(255, 255, 255, 0.205);
+        backdrop-filter: blur(10px);
         align-items: center;
         padding: 0px 20px;
         margin-left: 10px;
-        background: white;
         font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
           "Lucida Sans", Arial, sans-serif;
         z-index: 2;
@@ -489,7 +519,7 @@
         }
 
         &.negative {
-          background: rgb(255, 99, 99);
+          background: rgb(247, 62, 62);
         }
       }
 

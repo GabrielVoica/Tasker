@@ -1,0 +1,17 @@
+<section class="user-content">
+
+	{% if user_pic == null %}
+		<div class="user-image" style="background: url('https://avatars.dicebear.com/api/initials/{{username}}.svg')"></div>
+	{% else %}
+		<div class="user-image" style="background: url({{user_pic}})"></div>
+	{% endif %}
+
+	<form action="/perfil" method="POST" class="picture-form">
+		<input type="file" name="user-pic">
+        <input type="submit">
+	</form>
+     
+	<form action="/perfil" method="POST">
+	<input class="change-username" type="textfield" name="user-name" value="{{ user_name }}" placeholder="Introduce tu nombre de usuario">
+	</form>
+</section>

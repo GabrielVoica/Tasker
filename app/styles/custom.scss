@@ -6,7 +6,20 @@ html {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background: url('../../assets/textures/page.png');  
+  background: url("../../assets/textures/page.png");
+
+  ::-webkit-scrollbar {
+    width: 5px; /* width of the entire scrollbar */
+    border-radius: 6px;
+  }
+
+  
+
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba(192, 192, 192, 0.582);/* color of the scroll thumb */
+    border-radius: 6px; /* roundness of the scroll thumb */
+    border: 3px solid rgba(192, 192, 192, 0.562); /* creates padding around scroll thumb */
+  }
 }
 
 .error {
