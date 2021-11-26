@@ -1,28 +1,231 @@
-.user-profile{
-    .user-content{
-        width: 100%;
-        height: 100%;
+.user-profile {
+  background: rgba(255, 166, 0, 0.116);
+  .user-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+
+    .user-data {
+      width: 700px;
+      height: 500px;
+      background: url("../../assets/profile-backgrounds/default-background.jpg");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      backdrop-filter: blur(2px);
+      display: grid;
+      border-radius: 8px;
+      box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.178);
+      padding: 10px;
+      margin: 20px;
+      position: relative;
+
+      .user-level {
+        width: 200px;
+        height: 120px;
         background: white;
+        position: absolute;
+        right: 0;
+        top: 0;
+        margin: 5px;
+        border-radius: 8px;
+        font-size: 30px;
         display: flex;
-        flex-direction: column;
-        
+        justify-content: center;
+        align-items: center;
+        font-family: Arial, Helvetica, sans-serif;
+        color: #333;
+        border: 5px solid rgb(201, 171, 2);
+      }
 
-        .user-image{
-            width: 300px;
-            height: 300px;
-            background: black;
-        }
+      .user-image {
+        width: 300px;
+        height: 300px;
+        background: black;
+        background-position: center !important;
+        background-size: cover !important;
+        border-radius: 100%;
+        overflow: hidden;
+        border: 10px solid white;
+      }
 
-        .picture-form{
+      .picture-form {
+        display: flex;
+        justify-content: space-evenly;
+        width: 300px;
+        align-items: center;
+        background: linear-gradient(
+          180deg,
+          rgb(233, 233, 233) 10%,
+          rgb(255, 255, 255)
+        );
+        border-radius: 10px;
+        margin-bottom: 10px;
+        padding: 7px;
+      }
+
+      .change-username {
+        width: 450px;
+        height: 50px;
+        font-size: 22px;
+        border-radius: 6px;
+      }
+
+      .change-user-image {
+        display: none;
+      }
+
+      .file-uploader {
+        width: 140px;
+        height: 30px;
+        background: rgb(223, 4, 4);
+        color: white;
+        padding: 5px;
+        justify-content: space-evenly;
+        align-items: center;
+        display: flex;
+        font-family: Arial, Helvetica, sans-serif;
+        cursor: pointer;
+        box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.089);
+        border-radius: 4px;
+      }
+
+      .submit-image {
+        width: 140px;
+        height: 40px;
+        background: rgba(50, 216, 147, 0.616);
+        color: white;
+        padding: 5px;
+        justify-content: space-evenly;
+        align-items: center;
+        display: flex;
+        font-family: Arial, Helvetica, sans-serif;
+        cursor: pointer;
+        border: none;
+        box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.089);
+        border-radius: 4px;
+        font-size: 18px;
+      }
+    }
+
+    .user-taskers {
+      width: 1300px;
+      height: 500px;
+      background: white;
+      margin: 20px;
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.178);
+      background: url("../../assets/profile-backgrounds/default-background.jpg");
+      background-size: cover;
+      background-repeat: no-repeat;
+      position: relative;
+
+      
+
+      .rank {
+        z-index: 3;
+        width: 300px;
+        height: 300px;
+        background: rgb(255, 255, 255);
+        border-radius: 1000%;
+        border: 10px solid rgb(94, 94, 94);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 180px;
+        color: rgb(0, 201, 100);
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.178);
+        margin: 50px;
+      }
+
+      .user-stats {
+        position: absolute;
+        height: calc(100% - 20px);
+        width: calc(100% - 20px);
+        background: rgba(66, 66, 66, 0.514);
+        top: 0;
+        margin: 10px 0px;
+        border-radius: 8px;
+        box-shadow: 0px 0px 3px 1px rgba(255, 255, 255, 0.158);
+        backdrop-filter: blur(15px);
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+        .tasks-percentatge {
+          width: 300px;
+          height: 470px;
+          background: #333;
+          margin: 10px;
+          display: flex;
+          justify-content: space-evenly;
+          align-items: center;
+          border-radius: 6px;
+
+          .number-percentatge {
+            font-size: 25px;
+            font-family: Arial, Helvetica, sans-serif;
+          }
+
+          .info {
+            width: 45%;
+            height: 90%;
+          }
+
+          .good-tasks {
+            color: rgb(57, 255, 57);
+            font-size: 50px;
             display: flex;
             flex-direction: column;
-            width: 300px;
+            justify-content: flex-end;
+            align-items: center;
+            position: relative;
+
+            i {
+              position: absolute;
+              top: 0;
+            }
+
+            .percentatge {
+              width: 40px;
+              height: 250px;
+              background: rgb(57, 255, 57);
+            }
+          }
+
+          .bad-tasks {
+            color: rgb(226, 52, 40);
+            font-size: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            position: relative;
+
+            i {
+              position: absolute;
+              top: 0;
+            }
+
+            .percentatge {
+              width: 40px;
+              height: 90px;
+              background: rgb(226, 52, 40);
+            }
+          }
         }
 
-        .change-username{
-            width: 450px;
-            height: 50px;
-            font-size: 22px;
+        .profile-quote {
+          width: 410px;
+          height: 380px;
+          border-radius: 8px;
+          background: white;
+          font-family: 'Estonia', cursive;
+          font-size: 50px;
         }
+      }
     }
+  }
 }

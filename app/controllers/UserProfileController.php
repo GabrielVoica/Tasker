@@ -44,25 +44,58 @@ $data = $model->query($builder);
 $data_assoc = mysqli_fetch_assoc($data);
 
 
+if (isset($_FILES['user-pic']['name'])) {
+    $userPic = $_FILES['user-pic']['name'];
+    $currentDirectory = getcwd();
+    $uploadDirectory = "\\assets\\";
+
+    $errors = []; // Store errors here
+
+    $fileExtensionsAllowed = ['jpeg', 'jpg', 'png']; // These will be the only file extensions allowed 
+
+    $fileName = $_FILES['user-pic']['name'];
+    $fileSize = $_FILES['user-pic']['size'];
+    $fileTmpName  = $_FILES['user-pic']['tmp_name'];
+    $fileType = $_FILES['user-pic']['type'];
+
+    $uploadPath = 'assets/user-pictures/' . basename($fileName);
+
+    if ($fileSize > 4000000) {
+        $errors[] = "File exceeds maximum size (4MB)";
+    }
+
+    if (empty($errors)) {
+        $didUpload = move_uploaded_file($fileTmpName, $uploadPath);
+        $_SESSION['user-pic-url'] = basename($fileName);
+        $connection->query("UPDATE users SET picture_url = '" . basename($fileName) . "' WHERE id = '" . $_SESSION['id'] ."'" );   
+    } else {
+        foreach ($errors as $error) {
+            echo $error . "These are the errors" . "\n";
+        }
+    } 
+}
+
+
+
 if (isset($_POST['data'])) {
 
     if (strlen($_POST['data']) == 0) {
-        $sql = "UPDATE users SET username = 'John Doe' WHERE username = '" . $_SESSION['username'] . "'";
+        $sql = "UPDATE users SET username = 'John Doe' WHERE id = '" . $_SESSION['id'] . "'";
         $connection->query($sql);
         $_SESSION['username'] = 'John Doe';
 
         echo $twig->render('user.html.twig', [
             "username" => $_SESSION['username'],
-            "user_pic_uri" => $_SESSION['user-pic'],
+            "user_pic_uri" => $_SESSION['user-pic-url'],
             "is_admin" => $_SESSION['isAdmin'],
             "taskers" => $_SESSION['taskers'],
-            "user_name" => $data_assoc['username']
+            "user_name" => $_SESSION['username']
         ]);
-
         exit();
     } else {
 
-        $sql = "UPDATE users SET username = '" . $_POST['data'] . "' WHERE username = '" . $_SESSION['username'] . "'";
+        $sql = "UPDATE users SET username = '" . $_POST['data'] . "' WHERE id = '" . $_SESSION['id'] . "'";
+       
         $connection->query($sql);
         $_SESSION['username'] = $_POST['data'];
 
@@ -78,10 +111,14 @@ if (isset($_POST['data'])) {
     }
 }
 
+
+
 echo $twig->render('user.html.twig', [
     "username" => $_SESSION['username'],
-    "user_pic_uri" => $_SESSION['user-pic'],
+    "user_pic_uri" => $_SESSION['user-pic-url'],
     "is_admin" => $_SESSION['isAdmin'],
     "taskers" => $_SESSION['taskers'],
-    "user_name" => $data_assoc['username']
+    "user_name" => $data_assoc['username'],
+    "user_level" => $data_assoc['level'],
+    "task_balance" => $data_assoc['task_balance']
 ]);

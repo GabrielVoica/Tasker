@@ -4,9 +4,7 @@
 
 .navbar {
   height: 80px;
-  background: #f46b45;
-  background: -webkit-linear-gradient(to right, #eea849, #f46b45);
-  background: linear-gradient(to right, #eea849, #f46b45);
+  background: #333;
 
   display: flex;
   justify-content: space-between;
@@ -44,8 +42,7 @@
       width: 0px;
       height: 91.5vh;
       background: #ff5f6d;
-      background: -webkit-linear-gradient(180deg, #ff7f5f, #ffbd71);
-      background: linear-gradient(310deg, #ff7f5f, #ffc371);
+      background: #333;
 
       display: none;
       opacity: 0;
@@ -72,11 +69,11 @@
           background: white;
 
           a {
-            color: orange;
+            color: #333;
           }
 
           i {
-            color: orange;
+            color: #333;
           }
         }
 
@@ -188,7 +185,7 @@
   margin: 20px;
   right: 0;
 
-  background: linear-gradient(#fa72039d, #fbd886a4);
+  background: #333;
 
   .trendy-header {
     width: 450px;
@@ -252,17 +249,16 @@
 
 .home-content {
   width: calc(100vw - 430px);
-  height: 785px;
+  height: 800px;
   position: absolute;
   margin: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.267);
-  background: rgb(250, 185, 115);
+  background: rgb(253, 253, 253);
   border-radius: 6px;
   backdrop-filter: blur(10px);
-
 
   .searcher {
     width: 100%;
@@ -353,6 +349,67 @@
     }
   }
 
+  .task-result {
+    width: 95%;
+    height: 40px;
+    background: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    position: relative;
+
+    @keyframes appear {
+      from {
+        transform: scale(0);
+      }
+      to {
+        transform: scale(1);
+      }
+    }
+
+    .close {
+      margin: 0px 30px;
+      cursor: pointer;
+      position: absolute;
+      right: 0;
+      font-weight: 600;
+      font-size: 28px;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .task-error {
+      width: 100%;
+      height: 100%;
+      background: rgb(240, 41, 41);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgb(255, 235, 235);
+      font-size: 25px;
+      font-weight: 900;
+      box-shadow: 0px 2px 4px 4px rgba(0, 0, 0, 0.103);
+      animation: appear 0.3s forwards;
+    }
+
+    .task-success {
+      width: 100%;
+      height: 100%;
+      background: rgb(9, 158, 9);
+      backdrop-filter: blur(10px);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgb(255, 235, 235);
+      font-size: 25px;
+      font-weight: 900;
+      box-shadow: 0px 2px 4px 4px rgba(0, 0, 0, 0.103);
+      animation: appear 0.3s forwards;
+    }
+  }
+
   .task-list {
     width: 98%;
     height: 610px;
@@ -361,10 +418,11 @@
     border: 1px solid rgba(0, 0, 0, 0.13);
     box-shadow: 0px 2px 5px 5px rgba(0, 0, 0, 0.068);
     overflow-y: scroll;
+    overflow-x: hidden;
 
     .task-item {
       width: 99.5%;
-      height: 87px;
+      height: 60px;
       border-radius: 10px;
       background: rgb(255, 255, 255);
       display: flex;
@@ -380,26 +438,7 @@
       background-repeat: no-repeat;
       background-size: cover;
       margin: 4px;
-
-      &.sport {
-        background: url("../../assets/textures/sport.png");
-      }
-
-      &.productivity {
-        background: url("../../assets/textures/productivity.png");
-      }
-
-      &.food {
-        background: url("../../assets/textures/food.png");
-        background-size: 100%;
-        background-position: 20px;
-      }
-
-      &.guilty-pleasures {
-        background: url("../../assets/textures/guilty-pleasures.png");
-        background-size: 100%;
-        background-position: 20px;
-      }
+      border: 1px solid rgba(51, 51, 51, 0.137);
 
       &:hover:before {
         width: 100%;
@@ -443,11 +482,15 @@
         border-bottom-left-radius: 6px;
         border-right: 4px solid rgba(199, 199, 199, 0.055);
         z-index: 2;
+        font-size: 0;
+        position: relative;
 
         input {
           width: 100%;
           height: 100%;
-          background: rgba(255, 255, 255, 0.445);
+          background: url("../../assets/icons/add.png");
+          background-size: cover;
+          background-position: center;
           backdrop-filter: blur(10px);
           border: none;
           cursor: pointer;
@@ -455,26 +498,28 @@
           color: rgb(255, 255, 255);
           border-top-left-radius: 6px;
           border-bottom-left-radius: 6px;
+          font-size: 0;
+          position: relative;
         }
       }
 
       .task-title {
         height: 80%;
         box-shadow: 0px 0px 5px 3px rgba(230, 77, 6, 0.048);
-        color: white;
+        color: black;
         font-size: 24px;
         display: flex;
         justify-content: center;
-        background: rgba(255, 255, 255, 0.205);
+        background: rgba(255, 255, 255, 0.89);
         backdrop-filter: blur(10px);
         align-items: center;
         padding: 0px 20px;
         font-family: "Josefin Sans", sans-serif;
-        box-shadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.151);
-        font-weight: 551;
+        font-weight: normal;
         margin-left: 10px;
         border-radius: 6px;
         z-index: 2;
+        box-shadow: 0px 0px 7px 3px rgba(0, 0, 0, 0.151);
       }
 
       .task-description {
@@ -483,10 +528,11 @@
         color: white;
         font-size: 22px;
         font-weight: 800;
-        box-shadow: 0px 0px 7px 3px rgba(0, 0, 0, 0.151);
+
         border-radius: 6px;
         display: flex;
         justify-content: center;
+        color: black;
         background: rgba(255, 255, 255, 0.205);
         backdrop-filter: blur(10px);
         align-items: center;
@@ -525,6 +571,36 @@
 
       p {
         margin: 0;
+      }
+    }
+
+    .new-task {   
+      background: rgb(92, 89, 89);
+      border: none;
+      box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.322);
+
+      &:hover{
+        transform: scale(1.1);
+      }
+
+      a{
+        width: 100%;
+        height: 100%;
+        color: white;
+        text-decoration: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 30px;
+        font-weight: 600;
+      }
+
+      &::before {
+        display: none;
+      }
+
+      &::after {
+        display: none;
       }
     }
   }

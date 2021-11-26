@@ -17,3 +17,7 @@ admin:
 user:
   route: "/perfil"
   controller: "controllers/UserProfileController.php"
+
+tasks:
+  route: "/tareas"
+  controller: "controllers/TasksController.php"

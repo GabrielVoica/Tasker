@@ -1,0 +1,32 @@
+<div class="user-tasks-wrapper">
+
+	<div class="task-container">
+		<div class="user-tasks-header"></div>
+
+		<div class="task-list-wrapper">
+			{% for task in tasks %}
+				{% if task[4] == 1 %}
+					<div class="task good-task">
+						<button>Borrar</button>
+						<h2 class="task-name">{{ task[1] }}</h2>
+						{{ task[2] }}
+						{{ task[3] }}
+						<button>Click!</button>
+					</div>
+				{% elseif task[4] == 0 %}
+					<div class="task bad-task">
+						<button>Borrar</button>
+						<h2 class="task-name">{{ task[1] }}</h2>
+						{{ task[2] }}
+						{{ task[3] }}
+						<button>Click!</button>
+					</div>
+				{% endif %}
+			{% endfor %}
+		</div>
+
+
+	</div>
+
+
+</div>

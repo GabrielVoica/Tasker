@@ -8,6 +8,6 @@ $(".change-username").keyup((e) => {
       data: value,
     },
     cache: false,
-    
   });
 });
+

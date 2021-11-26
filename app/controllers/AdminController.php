@@ -51,9 +51,8 @@ if (isset($_POST['query']) && $_POST['query'] != null) {
     }
 }
 
-
 echo $twig->render('admin.html.twig', [
-    "user_pic_uri" => $_SESSION['user-pic'],
+    "user_pic_uri" => $_SESSION['user-pic-url'],
     "username" => $_SESSION['username'],
     "is_admin" => $_SESSION['isAdmin'],
     "taskers" => $_SESSION['taskers'],

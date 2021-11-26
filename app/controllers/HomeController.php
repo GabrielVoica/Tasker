@@ -17,10 +17,12 @@ require __DIR__ . "/../services/ModelDataManipulator/ModelContext.php";
 
 session_start();
 
+
 //Redirect to homepage if user is not logged
 if (!isset($_SESSION['logged']) || $_SESSION['logged'] != true) {
     header('location: login');
 }
+
 
 
 /**
@@ -30,8 +32,6 @@ if (!isset($_SESSION['logged']) || $_SESSION['logged'] != true) {
 $loader = new \Twig\Loader\FilesystemLoader('templates');
 $twig = new \Twig\Environment($loader);  //Add cache folder on production!
 
-//Add user picture system
-$_SESSION['user-pic'] = null;
 
 //Trendy categories
 $trendy_categories = [];
@@ -45,12 +45,11 @@ if ($result = $connection->query('SELECT DISTINCT categories.id, categories.name
     $trendy_categories = $result->fetch_all();
 }
 
-
-
 if ($result = $connection->query('SELECT * FROM tasks INNER JOIN categories ON categories.id = tasks.category')) {
     $task_list = $result->fetch_all();
     $num_of_tasks = mysqli_num_rows($result);
 }
+
 
 
 if (isset($_POST['data'])) {
@@ -91,12 +90,39 @@ if (isset($_POST['data'])) {
     exit();
 }
 
+
+
+if (isset($_POST['task_id'])) {
+
+    $query =  "SELECT * FROM user_tasks WHERE user_id = '" . $_SESSION['id'] . "' AND task_id = '" . $_POST['task_id'] . "'";
+    $data = $connection->query($query);
+
+    if (mysqli_num_rows($data) > 0) {
+        echo $twig->render('components/home.content.html.twig', [
+            "task_error"  => "Ya tienes esta tarea seleccionada",
+             "adding" => true
+        ]);
+        exit();
+    }
+
+    $query = "INSERT INTO user_tasks (user_id,task_id) VALUES (" . $_SESSION['id'] . "," . $_POST['task_id'] . ")";
+    $connection->query($query);
+
+    echo $twig->render('components/home.content.html.twig', [
+        "task_success" => "Tarea añadida",
+        "adding" => true
+    ]);
+    exit();
+}
+
+
+
 echo $twig->render('home.html.twig', [
     "username" => $_SESSION['username'],
-    "user_pic_uri" => $_SESSION['user-pic'],
+    "user_pic_uri" => $_SESSION['user-pic-url'],
     "is_admin" => $_SESSION['isAdmin'],
     "taskers" => $_SESSION['taskers'],
     "trendy_categories" => $trendy_categories,
     "task_list" => $task_list,
-    "num_of_tasks" => count($task_list) -1
+    "num_of_tasks" => count($task_list) - 1
 ]);

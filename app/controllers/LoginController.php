@@ -46,7 +46,7 @@ else {
   $data_context = new ModelContext(new MySqlModel($connection));
   $model = $data_context->getExecutionInstance();
 
-
+  
   if ($mail != null && $password != null) {
     $builder = new Builder();
     $builder->select('users');
@@ -72,14 +72,16 @@ else {
 
     $_SESSION['logged'] = true;
     $_SESSION['username'] = $data_assoc['username'];
+    $_SESSION['id'] = $data_assoc['id'];
     $_SESSION['isAdmin'] = $data_assoc['isAdmin'];
     $_SESSION['taskers'] = $data_assoc['taskers'];
+    $_SESSION['user-pic-url'] = $data_assoc['picture_url'];
 
-    header('location: /');
+   header('location: /');
   } else {
     echo $twig->render('login.html.twig', [
       "mail_error" => $mail_error,
-      "password_error" => $password_error
+      "password_error" => $password_error,
     ]);
   }
 }

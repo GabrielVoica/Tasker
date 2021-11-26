@@ -1,4 +1,4 @@
-{% if search == null %}
+{% if search == null and adding == null %}
 	<section class="home-content">
 
 		<form class="searcher">
@@ -6,7 +6,6 @@
 			<div class="search-button" value=""></div>
 			<i class="fas fa-search"></i>
 		</form>
-
 
 		<div class="actions">
 			<button class="action good-task-switcher">Positivas</button>
@@ -16,12 +15,16 @@
 			</select>
 		</div>
 
+		<div class="task-result"></div>
+
 		<div class="task-list">
 			{% for i in 0..num_of_tasks %}
 				<div class="task-item {{task_list[i][12]}}">
-					<form class="add-task" method="GET" action="/home">
-						<input type="submit" value="+">
+
+					<form class="add-task" method="POST">
+						<input class="add-task-input" type="submit" value="{{task_list[i][0]}}">
 					</form>
+
 					<p class="task-title">{{task_list[i][1]}}</p>
 					<span class="task-description">{{task_list[i][2]}}</span>
 
@@ -51,16 +54,22 @@
 					{% endif %}
 				</div>
 			{% endfor %}
+			<div class="task-item new-task">
+				<a href="#">+ Añadir nueva</a>
+			</div>
+
 		</div>
 	</section>
 
 
 {% elseif search != null and num_of_tasks > 0 %}
+	<p class="task-error">{{task_error}}</p>
+	<p class="task-success">{{task_success}}</p>
 	{% for i in 0..(num_of_tasks-1) %}
 		<div class="task-item {{task_list[i][12]}}">
-			<form class="add-task" method="GET" action="/home">
 
-				<input type="submit" value="+">
+			<form class="add-task" method="POST">
+				<input class="add-task-input" value="{{task_list[i][0]}}">
 			</form>
 
 			<p class="task-title">{{task_list[i][1]}}</p>
@@ -94,4 +103,21 @@
 		</div>
 	{% endfor %}
 
+	<div class="task-item new-task">
+		<a href="#">+ Añadir nueva</a>
+	</div>
+
+{% elseif num_of_tasks == 0 and search == true %}
+	<div class="task-item new-task">
+		<a href="#">+ Añadir nueva</a>
+	</div>
+
+{% elseif adding == true %}
+	{% if task_error%}
+		<p class="task-error task-log">{{task_error}}<span class="close close-error">X</span>
+		</p>
+	{% elseif task_success%}
+		<p class="task-success task-log">{{task_success}}<span class="close close-success">X</span>
+		</p>
+	{% endif %}
 {% endif %}
