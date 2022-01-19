@@ -37,7 +37,7 @@ $model = $data_context->getExecutionInstance();
 
 $builder = new Builder();
 $builder->select('users');
-$builder->where('{username=' . $_SESSION['username'] . '}');
+$builder->where('{id=' . $_SESSION['id'] . '}');
 $builder->build();
 
 $data = $model->query($builder);
@@ -67,12 +67,12 @@ if (isset($_FILES['user-pic']['name'])) {
     if (empty($errors)) {
         $didUpload = move_uploaded_file($fileTmpName, $uploadPath);
         $_SESSION['user-pic-url'] = basename($fileName);
-        $connection->query("UPDATE users SET picture_url = '" . basename($fileName) . "' WHERE id = '" . $_SESSION['id'] ."'" );   
+        $connection->query("UPDATE users SET picture_url = '" . basename($fileName) . "' WHERE id = '" . $_SESSION['id'] . "'");
     } else {
         foreach ($errors as $error) {
             echo $error . "These are the errors" . "\n";
         }
-    } 
+    }
 }
 
 
@@ -95,7 +95,7 @@ if (isset($_POST['data'])) {
     } else {
 
         $sql = "UPDATE users SET username = '" . $_POST['data'] . "' WHERE id = '" . $_SESSION['id'] . "'";
-       
+
         $connection->query($sql);
         $_SESSION['username'] = $_POST['data'];
 
@@ -111,6 +111,24 @@ if (isset($_POST['data'])) {
     }
 }
 
+$positiveBalance = $data_assoc['task_balance'];
+$negativeBalance = $data_assoc['negative_balance'];
+
+if ($positiveBalance > 100) {
+    $positiveBalance = 100;
+} elseif ($positiveBalance < 0) {
+    $positiveBalance  = 0;
+}
+
+if ($negativeBalance > 100) {
+    $negativeBalance = 100;
+} elseif ($negativeBalance < 0) {
+    $negativeBalance = 0;
+}
+
+
+
+
 
 
 echo $twig->render('user.html.twig', [
@@ -120,5 +138,7 @@ echo $twig->render('user.html.twig', [
     "taskers" => $_SESSION['taskers'],
     "user_name" => $data_assoc['username'],
     "user_level" => $data_assoc['level'],
-    "task_balance" => $data_assoc['task_balance']
+    "positive_balance" => $positiveBalance,
+    "negative_balance" => $negativeBalance,
+    "task_balance" => $positiveBalance - $negativeBalance
 ]);

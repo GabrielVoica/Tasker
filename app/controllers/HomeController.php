@@ -41,14 +41,15 @@ $connection = $database->connect();
 $data_context = new ModelContext(new MySqlModel($connection));
 $model = $data_context->getExecutionInstance();
 
-if ($result = $connection->query('SELECT DISTINCT categories.id, categories.name, categories.icon_name, categories.icon_color, categories.category_file_name FROM categories, tasks WHERE tasks.category = categories.id ORDER BY tasks.users_using DESC')) {
+if ($result = $connection->query('SELECT DISTINCT categories.id, categories.name, categories.icon_name, categories.icon_color, categories.category_file_name FROM categories')) {
     $trendy_categories = $result->fetch_all();
 }
 
-if ($result = $connection->query('SELECT * FROM tasks INNER JOIN categories ON categories.id = tasks.category')) {
+if ($result = $connection->query('SELECT * FROM tasks INNER JOIN categories ON categories.id = tasks.category WHERE tasks.created_by = ' . $_SESSION['id'] . '')) {
     $task_list = $result->fetch_all();
     $num_of_tasks = mysqli_num_rows($result);
 }
+
 
 
 
@@ -100,7 +101,7 @@ if (isset($_POST['task_id'])) {
     if (mysqli_num_rows($data) > 0) {
         echo $twig->render('components/home.content.html.twig', [
             "task_error"  => "Ya tienes esta tarea seleccionada",
-             "adding" => true
+            "adding" => true
         ]);
         exit();
     }
@@ -114,6 +115,35 @@ if (isset($_POST['task_id'])) {
     ]);
     exit();
 }
+
+
+if (isset($_POST['delete_task_id'])) {
+    $query = "DELETE FROM user_tasks WHERE user_id = " . $_SESSION['id'] . " AND task_id = " . $_POST['delete_task_id'];
+    $connection->query($query);
+
+    $query = "DELETE FROM tasks WHERE id = " . $_POST['delete_task_id'];
+    $connection->query($query);
+
+    $tasks = $connection->query('SELECT * FROM tasks INNER JOIN categories ON categories.id = tasks.category WHERE tasks.created_by = ' . $_SESSION['id'] . '');
+    $tasks_data = $tasks->fetch_all();
+    $tasks_rows = mysqli_num_rows($tasks);
+
+    $data = [];
+
+    foreach ($tasks_data as $task) {
+        array_push($data, $task);
+    }
+
+    echo $twig->render('components/home.content.html.twig', [
+        "task_list" => $data,
+        "search" => true,
+        "num_of_tasks" => $tasks_rows,
+        "trendy_categories" => $trendy_categories,
+    ]);
+    exit();
+}
+
+
 
 
 

@@ -4,14 +4,18 @@ $panel-width: 64px;
 
 .register-page {
   font-family: "Roboto";
+  background: radial-gradient(circle, #f58402, #ffae00 60%, #ff7b00);
+
+  .operation {
+    margin-bottom: 10px;
+  }
 
   .type-writter-container {
     width: 100%;
     text-align: center;
-    margin-bottom: 100px;
-    height: 30px;
-    margin-top: 0px;
-    
+    height: 50px;
+    margin-top: 20px;
+    margin-top: 20px;
 
     .type-writter {
       width: fit-content;
@@ -22,9 +26,9 @@ $panel-width: 64px;
       min-height: 48px;
 
       &:after {
-        content: "Conecta";
+        content: "Tareas";
         display: inline-block;
-        border-right: 1px solid white;
+
         animation: typewritter 10s infinite;
         animation-delay: 2s;
         font-size: 40px;
@@ -38,10 +42,9 @@ $panel-width: 64px;
     display: flex;
     justify-content: center;
     width: 100%;
-    margin-top: 50px;
 
     .register-page-panel-div {
-      min-height: 150px;
+      min-height: 100px;
       width: $panel-width;
       font-size: 85px;
       overflow: hidden;
@@ -55,7 +58,7 @@ $panel-width: 64px;
         width: 200px;
         left: var(--left);
         position: relative;
-        color: rgb(var(--hue), var(--hue2), var(--hue3));
+        color: black;
         text-transform: uppercase;
         font-weight: 300;
       }
@@ -79,7 +82,11 @@ $panel-width: 64px;
       width: 500px;
       height: 100%;
       font-size: 22px;
-      width: 600px;
+      width: 700px;
+      background: white;
+      align-items: center;
+      justify-content: center;
+      border-radius: 20px;
 
       input {
         height: 40px;
@@ -87,7 +94,7 @@ $panel-width: 64px;
         border-bottom: 1px solid rgba(0, 0, 0, 0.4);
         margin-bottom: 40px;
         font-size: 22px;
-        width: 100%;
+        width: 400px;
       }
 
       i {
@@ -122,6 +129,11 @@ $panel-width: 64px;
 
     .login-link {
       margin-top: 30px;
+      text-decoration: none;
+      font-size: 20px;
+      color: black;
+      font-weight: 600;
+      margin-bottom: 20px;
     }
   }
 }
@@ -187,85 +199,85 @@ $panel-width: 64px;
 
 @keyframes typewritter {
   0% {
-    content: "Conect";
+    content: "Tarea";
   }
   6% {
-    content: "Conec";
+    content: "Tare";
   }
   13% {
-    content: "Cone";
+    content: "Tar";
   }
   15% {
-    content: "Con";
+    content: "Ta";
   }
   19% {
-    content: "Co";
+    content: "T";
   }
   22% {
-    content: "C";
+    content: " ";
   }
   24% {
-    content: " ";
+    content: "A";
   }
   26% {
-    content: "V";
+    content: "Al";
   }
-  28%{
-    content: "Ve"
+  28% {
+    content: "Al P";
   }
   34% {
-    content: "Ven";
+    content: "Al Po";
   }
   38% {
-    content: "Vend";
+    content: "Al Pod";
   }
   42% {
-    content: "Vende";
+    content: "Al Pode";
   }
   47% {
-    content: "Vend";
+    content: "Al Poder";
   }
   52% {
-    content: "Ven";
+    content: "Al Pode";
   }
   56% {
-    content: "Ve";
+    content: "Al Pod";
   }
   61% {
-    content: "V";
+    content: "Al Po";
   }
   65% {
-    content: " ";
+    content: "Al P";
   }
   69% {
-    content: "C";
+    content: "Al";
   }
   74% {
-    content: "Co";
+    content: "A";
   }
   78% {
-    content: "Con";
+    content: " ";
   }
   83% {
-    content: "Cone";
+    content: "Ta";
   }
   87% {
-    content: "Conec";
+    content: "Tare";
   }
   95% {
-    content: "Conect";
+    content: "Tarea";
   }
   100% {
-    content: "Conecta";
+    content: "Tareas";
   }
 }
 
 @keyframes typewritter-border {
   0%,
   100% {
-    border-color: white;
+    border-color: rgba(255, 255, 255, 0);
   }
   50% {
-    border-color: rgb(122, 118, 118);
+    border-color: rgb(0, 0, 0);
   }
 }

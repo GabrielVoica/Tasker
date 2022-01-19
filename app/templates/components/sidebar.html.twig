@@ -1,9 +1,9 @@
 <section class="sidebar">
-	<h1 class="trendy-header">TRENDY</h1>
+	<h1 class="trendy-header">Categorias</h1>
 	{% set i = 1 %}
 	{% for row in trendy_categories %}
 		<div class="trendy-tag">
-		<span clas="order-num" style="background:{{row[3]}}">{{i}}</span>
+			<span clas="order-num" style="background:{{row[3]}}">{{i}}</span>
 			<p>{{row[1]}}</p>
 			<i class="fa {{row[2]}}"></i>
 		</div>

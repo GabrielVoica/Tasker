@@ -1,7 +1,8 @@
 <section class="user-content">
 	<div class="user-data">
 		<div class="user-level">
-			Lvl {{user_level}}
+			Lvl
+			{{user_level}}
 		</div>
 		{% if user_pic_uri == null %}
 			<div class="user-image" style="background: url('https://avatars.dicebear.com/api/initials/{{username}}.svg')"></div>
@@ -27,29 +28,31 @@
 			<div class="tasks-percentatge">
 				<div class="good-tasks info">
 					<i class="far fa-smile-wink"></i>
-					<div class="number-percentatge">70%</div>
-					<div class="percentatge"></div>
+
+					<div class="percentatge good" style="height: {{ positive_balance * 3 }}px"></div>
 				</div>
 				<div class="bad-tasks info">
 					<i class="fas fa-meh"></i>
-					<div class="number-percentatge">30%</div>
-					<div class="percentatge"></div>
+
+					<div class="percentatge bad" style="height: {{ negative_balance * 3 }}px"></div>
 				</div>
 
 			</div>
 
 			<div class="rank">
-				{% if task_balance < 0 %}
-				 <span style="color:red">F</span>
-				{% elseif task_balance < 10  %}
-				 <span style="color:orange">D</span>
-				 {% elseif task_balance < 20  %}
-				 <span style="color:yellow">C</span>
-				 {% elseif task_balance < 30  %}
-				 <span style="color:rgb(50,200,50)">B</span>
-				 {% elseif task_balance > 30  %}
-				 <span style="color:green">A</span>
-				 {% endif %}
+				{% if task_balance <= 5 %}
+					<span style="color:red">F</span>
+				{% elseif task_balance > 5 and task_balance < 30  %}
+					<span style="color:orange">D</span>
+				{% elseif task_balance > 30 and task_balance < 55   %}
+					<span style="color:yellow">C</span>
+				{% elseif task_balance > 55 and task_balance < 65  %}
+					<span style="color:rgb(50,200,50)">B</span>
+				{% elseif task_balance > 65 and task_balance < 80  %}
+					<span style="color:green">A</span>
+				{% elseif task_balance > 80 %}
+					<span style="color: cyan">+A</span>
+				{% endif %}
 			</div>
 
 		</div>

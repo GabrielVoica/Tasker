@@ -1,0 +1,20 @@
+<div class="form-wrapper">
+	<form class="task-form" method="POST" action"/add-task">
+		<label for="task-name">Nombre</label>
+		<input type="text" required name="task-name"/>
+		<label for="task-category">Categoria</label>
+		<select name="task-category" required>
+			{% for category in categories%}
+				<option value="{{ category[0] }}">{{ category[1] }}</option>
+			{% endfor %}
+		</select>
+		<label for="task-type">Tipo</label>
+		<select name="task-type" required>
+			<option value="1">Positiva</option>
+			<option value="0">Negativa</option>
+		</select>
+		<label for="task-category">Taskies</label>
+		<input type="number" max="100" min="1" name="task-taskies" required/>
+		<input type="submit"/>
+	</form>
+</div>

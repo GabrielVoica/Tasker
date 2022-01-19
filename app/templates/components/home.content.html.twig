@@ -1,61 +1,56 @@
 {% if search == null and adding == null %}
 	<section class="home-content">
 
-		<form class="searcher">
+		<div class="searcher">
 			<input class="search-bar" placeholder="Buscar...">
-			<div class="search-button" value=""></div>
-			<i class="fas fa-search"></i>
-		</form>
-
-		<div class="actions">
-			<button class="action good-task-switcher">Positivas</button>
-			<button class="action bad-task-switcher">Negativas</button>
-			<select>
-				<option>Categoria</option>
-			</select>
 		</div>
 
 		<div class="task-result"></div>
 
 		<div class="task-list">
-			{% for i in 0..num_of_tasks %}
-				<div class="task-item {{task_list[i][12]}}">
+			{% if num_of_tasks <  0 %}
 
-					<form class="add-task" method="POST">
-						<input class="add-task-input" type="submit" value="{{task_list[i][0]}}">
-					</form>
+				{% else %}
+					{% for i in 0..num_of_tasks %}
+						<div class="task-item {{task_list[i][12]}}">
 
-					<p class="task-title">{{task_list[i][1]}}</p>
-					<span class="task-description">{{task_list[i][2]}}</span>
+							<form class="add-task" method="POST">
+								<input class="add-task-input" value="{{task_list[i][0]}}">
+							</form>
 
-					{% if task_list[i][4] == 1 %}
-						<span class="task-cost positive">+
-							{{task_list[i][3]}}
-							T</span>
+							<p class="task-title">{{task_list[i][1]}}</p>
+							<button class="delete-task" value="{{task_list[i][0]}}">X</button>
 
-					{% elseif task_list[i][4] == 0 %}
-						<span class="task-cost negative">-
-							{{task_list[i][3]}}
-							T</span>
-					{% endif %}
 
-					{% if task_list[i][6] == 1 %}
-						<span class="task-level one" style="background: {{task_list[i][11]}}">
-							<p class="task-category">{{task_list[i][9]}}</p>
-						</span>
-					{% elseif task_list[i][6] == 2 %}
-						<span class="task-level two" style="background: {{task_list[i][11]}}">
-							<p class="task-category">{{task_list[i][9]}}</p>
-						</span>
-					{% elseif task_list[i][6] == 3 %}
-						<span class="task-level three" style="background: {{task_list[i][11]}}">
-							<p class="task-category">{{task_list[i][9]}}</p>
-						</span>
-					{% endif %}
-				</div>
-			{% endfor %}
-			<div class="task-item new-task">
-				<a href="#">+ Añadir nueva</a>
+							{% if task_list[i][4] == 1 %}
+								<span class="task-cost positive">+
+									{{task_list[i][3]}}
+									T</span>
+
+							{% elseif task_list[i][4] == 0 %}
+								<span class="task-cost negative">-
+									{{task_list[i][3]}}
+									T</span>
+							{% endif %}
+
+							{% if task_list[i][6] == 1 %}
+								<span class="task-level one" style="background: {{task_list[i][12]}}">
+									<p class="task-category">{{task_list[i][10]}}</p>
+								</span>
+							{% elseif task_list[i][6] == 2 %}
+								<span class="task-level two" style="background: {{task_list[i][12]}}">
+									<p class="task-category">{{task_list[i][10]}}</p>
+								</span>
+							{% elseif task_list[i][6] == 3 %}
+								<span class="task-level three" style="background: {{task_list[i][12]}}">
+									<p class="task-category">{{task_list[i][10]}}</p>
+								</span>
+							{% endif %}
+						</div>
+					{% endfor %}
+			{% endif %}
+			<div class="new-task">
+				<a href="/add-task">+ Añadir tarea</a>
 			</div>
 
 		</div>
@@ -63,8 +58,7 @@
 
 
 {% elseif search != null and num_of_tasks > 0 %}
-	<p class="task-error">{{task_error}}</p>
-	<p class="task-success">{{task_success}}</p>
+
 	{% for i in 0..(num_of_tasks-1) %}
 		<div class="task-item {{task_list[i][12]}}">
 
@@ -73,7 +67,7 @@
 			</form>
 
 			<p class="task-title">{{task_list[i][1]}}</p>
-			<span class="task-description">{{task_list[i][2]}}</span>
+			<button class="delete-task" value="{{task_list[i][0]}}">X</button>
 
 
 			{% if task_list[i][4] == 1 %}
@@ -88,28 +82,28 @@
 			{% endif %}
 
 			{% if task_list[i][6] == 1 %}
-				<span class="task-level one" style="background: {{task_list[i][11]}}">
-					<p class="task-category">{{task_list[i][9]}}</p>
+				<span class="task-level one" style="background: {{task_list[i][12]}}">
+					<p class="task-category">{{task_list[i][10]}}</p>
 				</span>
 			{% elseif task_list[i][6] == 2 %}
-				<span class="task-level two" style="background: {{task_list[i][11]}}">
-					<p class="task-category">{{task_list[i][9]}}</p>
+				<span class="task-level two" style="background: {{task_list[i][12]}}">
+					<p class="task-category">{{task_list[i][10]}}</p>
 				</span>
 			{% elseif task_list[i][6] == 3 %}
-				<span class="task-level three" style="background: {{task_list[i][11]}}">
-					<p class="task-category">{{task_list[i][9]}}</p>
+				<span class="task-level three" style="background: {{task_list[i][12]}}">
+					<p class="task-category">{{task_list[i][10]}}</p>
 				</span>
 			{% endif %}
 		</div>
 	{% endfor %}
 
-	<div class="task-item new-task">
-		<a href="#">+ Añadir nueva</a>
+	<div class="new-task">
+		<a href="/add-task">+ Añadir tarea</a>
 	</div>
 
 {% elseif num_of_tasks == 0 and search == true %}
-	<div class="task-item new-task">
-		<a href="#">+ Añadir nueva</a>
+	<div class=" new-task">
+		<a href="/add-task">+ Añadir tarea</a>
 	</div>
 
 {% elseif adding == true %}

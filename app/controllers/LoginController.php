@@ -46,7 +46,7 @@ else {
   $data_context = new ModelContext(new MySqlModel($connection));
   $model = $data_context->getExecutionInstance();
 
-  
+
   if ($mail != null && $password != null) {
     $builder = new Builder();
     $builder->select('users');
@@ -63,8 +63,7 @@ else {
     } else if (!password_verify($password, $data_assoc['passw'])) {
       $password_error = "Incorrect password";
     }
-  } 
-  else {
+  } else {
     $mail_error = "Missing fields";
   }
 
@@ -77,7 +76,7 @@ else {
     $_SESSION['taskers'] = $data_assoc['taskers'];
     $_SESSION['user-pic-url'] = $data_assoc['picture_url'];
 
-   header('location: /');
+    header('location: /');
   } else {
     echo $twig->render('login.html.twig', [
       "mail_error" => $mail_error,

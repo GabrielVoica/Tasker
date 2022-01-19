@@ -87,13 +87,15 @@ if (empty($_POST)) {
 
     $password_hash = password_hash($password, PASSWORD_DEFAULT);
     $builder->insert('users');
-    $builder->values('{username=' . $username . '}{email=' . $email . '}{passw=' . $password_hash . '}{isAdmin=false}{taskers=0}');
+    $builder->values('{username=' . $username . '}{email=' . $email . '}{passw=' . $password_hash . '}{level=1}{isAdmin=false}{taskers=0}');
     $builder->build();
 
     $data = $model->query($builder);
 
+
+
     echo $twig->render('register.html.twig', [
-      "registered" => "Account created!"
+      "registered" => "Cuenta creada!"
     ]);
   } else {
     echo $twig->render('register.html.twig', [

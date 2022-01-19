@@ -13,6 +13,10 @@
   align-items: center;
   z-index: 1000;
 
+  @media (max-width: 1550px) {
+    height: 50px;
+  }
+
   .navbar-header {
     width: 100%;
     padding-left: 25px;
@@ -38,15 +42,18 @@
     .user-actions {
       position: absolute;
       left: -20px;
-      top: 80px;
+      top: 50px;
       width: 0px;
       height: 91.5vh;
       background: #ff5f6d;
       background: #333;
-
       display: none;
       opacity: 0;
       box-shadow: -1px 2px 5px 0px #00000056;
+
+      @media (max-width: 1550px) {
+        height: 100vh;
+      }
 
       i {
         color: white;
@@ -114,6 +121,11 @@
       cursor: pointer;
       background: rgb(255, 255, 255);
       padding: 2px;
+
+      @media (max-width: 1550px) {
+        height: 35px;
+        width: 35px;
+      }
     }
   }
 
@@ -124,6 +136,12 @@
     background: white;
     border-radius: 20px;
     box-shadow: 0px 0px 6px 3px rgba(0, 0, 0, 0.199);
+
+    @media (max-width: 1550px) {
+      height: 40px;
+      width: 150px;
+    }
+
     .page-brand {
       width: 200px;
       height: 100%;
@@ -131,6 +149,11 @@
       background-size: 95px;
       background-position: center;
       background-repeat: no-repeat;
+
+      @media (max-width: 1550px) {
+        width: 150px;
+        background-size: 60px;
+      }
     }
     .home-link {
       position: absolute;
@@ -184,6 +207,13 @@
   position: absolute;
   margin: 20px;
   right: 0;
+  overflow-y: scroll;
+  overflow-x: hidden;
+
+  @media (max-width: 1600px) {
+    height: 370px;
+    width: 250px;
+  }
 
   background: #333;
 
@@ -200,6 +230,13 @@
     margin-top: 0;
     position: relative;
     top: 8px;
+
+    @media (max-width: 1600px) {
+      font-size: 25px;
+      margin: 10px;
+      height: 20px;
+      margin-bottom: 30px;
+    }
   }
 
   .trendy-tag {
@@ -216,6 +253,11 @@
     font-weight: 600;
     color: rgba(0, 0, 0, 0.555);
     border-radius: 6px;
+
+    @media (max-width: 1600px) {
+      height: 40px;
+      font-size: 15px;
+    }
 
     span {
       height: 100%;
@@ -260,31 +302,35 @@
   border-radius: 6px;
   backdrop-filter: blur(10px);
 
+  @media (max-width: 1600px) {
+    height: 520px;
+    width: calc(100vw - 300px);
+  }
+
   .searcher {
     width: 100%;
     border: none;
     height: 60px;
     padding: 0;
     border-radius: 10px;
-    margin-top: 10px;
     display: flex;
     justify-content: center;
     position: relative;
 
     .search-bar {
-      width: calc(100% - 175px);
+      width: 100%;
       height: 100%;
       border: none;
       margin: 0;
       padding: 0;
-      border-radius: 2px;
       font-size: 25px;
       padding-left: 20px;
       color: rgb(0, 0, 0);
       box-shadow: 0px 0px 1px 2px rgba(163, 163, 163, 0.178);
-      border-radius: 40px;
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0;
+
+      @media (max-width: 1550px) {
+        font-size: 20px;
+      }
 
       &:focus-visible {
         outline: none;
@@ -308,6 +354,10 @@
       box-shadow: 0px 0px 1px 2px rgba(163, 163, 163, 0.171);
       z-index: 3;
       background: none;
+
+      @media (max-width: 1550px) {
+        font-size: 15px;
+      }
     }
 
     i {
@@ -350,14 +400,20 @@
   }
 
   .task-result {
-    width: 95%;
-    height: 40px;
+    width: 99%;
+    height: 45px;
     background: none;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 10px;
     position: relative;
+    margin-top: 10px;
+
+    @media (max-width: 1550px) {
+      height: 30px;
+      font-size: 15px;
+    }
 
     @keyframes appear {
       from {
@@ -376,6 +432,10 @@
       font-weight: 600;
       font-size: 28px;
       font-family: Arial, Helvetica, sans-serif;
+
+      @media (max-width: 1550px) {
+        font-size: 15px;
+      }
     }
 
     .task-error {
@@ -389,8 +449,11 @@
       color: rgb(255, 235, 235);
       font-size: 25px;
       font-weight: 900;
-      box-shadow: 0px 2px 4px 4px rgba(0, 0, 0, 0.103);
       animation: appear 0.3s forwards;
+
+      @media (max-width: 1550px) {
+        font-size: 15px;
+      }
     }
 
     .task-success {
@@ -405,8 +468,11 @@
       color: rgb(255, 235, 235);
       font-size: 25px;
       font-weight: 900;
-      box-shadow: 0px 2px 4px 4px rgba(0, 0, 0, 0.103);
       animation: appear 0.3s forwards;
+
+      @media (max-width: 1550px) {
+        font-size: 15px;
+      }
     }
   }
 
@@ -419,6 +485,10 @@
     box-shadow: 0px 2px 5px 5px rgba(0, 0, 0, 0.068);
     overflow-y: scroll;
     overflow-x: hidden;
+
+    @media (max-width: 1600px) {
+      height: 400px;
+    }
 
     .task-item {
       width: 99.5%;
@@ -439,9 +509,14 @@
       background-size: cover;
       margin: 4px;
       border: 1px solid rgba(51, 51, 51, 0.137);
+      transition: 0.5s all;
 
-      &:hover:before {
-        width: 100%;
+      @media (max-width: 1600px) {
+        height: 40px;
+      }
+
+      &:hover {
+        background-color: rgb(232, 232, 232);
       }
 
       &:before {
@@ -470,8 +545,17 @@
         box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.096);
         font-weight: 700;
 
+        @media (max-width: 1600px) {
+          font-size: 20px;
+          height: 30px;
+        }
+
         p {
           font-size: 15px;
+
+          @media (max-width: 1600px) {
+            font-size: 12px;
+          }
         }
       }
 
@@ -484,12 +568,14 @@
         z-index: 2;
         font-size: 0;
         position: relative;
+        background: white;
+        max-height: 60px;
 
         input {
           width: 100%;
           height: 100%;
           background: url("../../assets/icons/add.png");
-          background-size: cover;
+          background-size: 120%;
           background-position: center;
           backdrop-filter: blur(10px);
           border: none;
@@ -505,7 +591,6 @@
 
       .task-title {
         height: 80%;
-        box-shadow: 0px 0px 5px 3px rgba(230, 77, 6, 0.048);
         color: black;
         font-size: 24px;
         display: flex;
@@ -519,28 +604,10 @@
         margin-left: 10px;
         border-radius: 6px;
         z-index: 2;
-        box-shadow: 0px 0px 7px 3px rgba(0, 0, 0, 0.151);
-      }
 
-      .task-description {
-        height: 80%;
-        box-shadow: 0px 0px 5px 3px rgba(230, 77, 6, 0.048);
-        color: white;
-        font-size: 22px;
-        font-weight: 800;
-
-        border-radius: 6px;
-        display: flex;
-        justify-content: center;
-        color: black;
-        background: rgba(255, 255, 255, 0.205);
-        backdrop-filter: blur(10px);
-        align-items: center;
-        padding: 0px 20px;
-        margin-left: 10px;
-        font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-          "Lucida Sans", Arial, sans-serif;
-        z-index: 2;
+        @media (max-width: 1600px) {
+          font-size: 15px;
+        }
       }
 
       .task-cost {
@@ -557,8 +624,13 @@
         padding: 0px 20px;
         margin-left: 10px;
         position: absolute;
-        right: 30px;
+        right: 70px;
         border-radius: 6px;
+
+        @media (max-width: 1600px) {
+          font-size: 15px;
+          height: 30px;
+        }
 
         &.positive {
           background: rgba(114, 255, 114, 0.856);
@@ -574,16 +646,35 @@
       }
     }
 
-    .new-task {   
+    .delete-task {
+      height: 42px;
+      width: 35px;
+      background-color: rgba(249, 51, 51, 0.845);
+      color: white;
+      border: none;
+      font-size: 20px;
+      z-index: 1000;
+      cursor: pointer;
+      position: absolute;
+      border-radius: 10px;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      right: 0;
+    }
+
+    .new-task {
       background: rgb(92, 89, 89);
       border: none;
       box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.322);
+      height: 45px;
+      border-radius: 6px;
+      transition: 1s all;
 
-      &:hover{
+      &:hover {
         transform: scale(1.1);
       }
 
-      a{
+      a {
         width: 100%;
         height: 100%;
         color: white;
@@ -593,6 +684,10 @@
         align-items: center;
         font-size: 30px;
         font-weight: 600;
+
+        @media (max-width: 1600px) {
+          font-size: 20px;
+        }
       }
 
       &::before {

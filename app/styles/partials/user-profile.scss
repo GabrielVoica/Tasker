@@ -121,8 +121,6 @@
       background-repeat: no-repeat;
       position: relative;
 
-      
-
       .rank {
         z-index: 3;
         width: 300px;
@@ -135,7 +133,7 @@
         align-items: center;
         font-size: 180px;
         color: rgb(0, 201, 100);
-        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
         box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.178);
         margin: 50px;
       }
@@ -189,8 +187,9 @@
             }
 
             .percentatge {
+              max-height: 300px;
+              min-height: 20px;
               width: 40px;
-              height: 250px;
               background: rgb(57, 255, 57);
             }
           }
@@ -210,8 +209,9 @@
             }
 
             .percentatge {
+              max-height: 300px;
+              min-height: 20px;
               width: 40px;
-              height: 90px;
               background: rgb(226, 52, 40);
             }
           }
@@ -222,7 +222,7 @@
           height: 380px;
           border-radius: 8px;
           background: white;
-          font-family: 'Estonia', cursive;
+          font-family: "Estonia", cursive;
           font-size: 50px;
         }
       }
