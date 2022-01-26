@@ -15,7 +15,7 @@ La estructura se basa principalmente en el patron MVC, y esta pensado para facil
 
 # Diseño del software
 
-El diseño interno de la plataforma es el punto más fuerte del proyecto. Esta pensando para ser escalable, mantanible y facilmente editable. Esto se consigue con la implementación de distintos patrones de diseño para crear una jerarquía de clases estable y armonica.
+El diseño interno de la plataforma es el punto más fuerte del proyecto. Esta pensando para ser escalable, mantanible y facilmente editable. Esto se consigue con la implementación de distintos patrones de diseño juntamente con la creación de un pequeño framework basado en php donde se implementa el patrón MVC.
 
 
 
