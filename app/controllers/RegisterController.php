@@ -19,9 +19,11 @@ session_start();
 $loader = new \Twig\Loader\FilesystemLoader('templates');
 $twig = new \Twig\Environment($loader);  //Add cache folder on production!
 
-
+//The default action when there is no data in the request
 if (empty($_POST)) {
   echo $twig->render('register.html.twig', ["var" => "Hello"]);
+
+  //Post request
 } else {
 
   $username           =  $_POST['username'];
@@ -40,6 +42,7 @@ if (empty($_POST)) {
   $builder = new Builder();
 
 
+  //Validations
   if ($username == null) {
     $username_error = "The username is a required field";
   } else if (!preg_match('/^[\w\-\_]*$/', $username)) {

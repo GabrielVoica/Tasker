@@ -42,13 +42,13 @@
 			<div class="rank">
 				{% if task_balance <= 5 %}
 					<span style="color:red">F</span>
-				{% elseif task_balance > 5 and task_balance < 30  %}
+				{% elseif task_balance > 5 and task_balance <= 30  %}
 					<span style="color:orange">D</span>
-				{% elseif task_balance > 30 and task_balance < 55   %}
+				{% elseif task_balance > 30 and task_balance <= 55   %}
 					<span style="color:yellow">C</span>
-				{% elseif task_balance > 55 and task_balance < 65  %}
+				{% elseif task_balance > 55 and task_balance <= 65  %}
 					<span style="color:rgb(50,200,50)">B</span>
-				{% elseif task_balance > 65 and task_balance < 80  %}
+				{% elseif task_balance > 65 and task_balance <= 80  %}
 					<span style="color:green">A</span>
 				{% elseif task_balance > 80 %}
 					<span style="color: cyan">+A</span>

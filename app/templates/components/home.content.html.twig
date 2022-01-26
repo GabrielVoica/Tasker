@@ -8,6 +8,9 @@
 		<div class="task-result"></div>
 
 		<div class="task-list">
+			<div class="new-task">
+				<a href="/add-task">+ Añadir tarea</a>
+			</div>
 			{% if num_of_tasks <  0 %}
 
 				{% else %}
@@ -49,16 +52,16 @@
 						</div>
 					{% endfor %}
 			{% endif %}
-			<div class="new-task">
-				<a href="/add-task">+ Añadir tarea</a>
-			</div>
+
 
 		</div>
 	</section>
 
 
 {% elseif search != null and num_of_tasks > 0 %}
-
+	<div class="new-task">
+		<a href="/add-task">+ Añadir tarea</a>
+	</div>
 	{% for i in 0..(num_of_tasks-1) %}
 		<div class="task-item {{task_list[i][12]}}">
 
@@ -97,9 +100,6 @@
 		</div>
 	{% endfor %}
 
-	<div class="new-task">
-		<a href="/add-task">+ Añadir tarea</a>
-	</div>
 
 {% elseif num_of_tasks == 0 and search == true %}
 	<div class=" new-task">

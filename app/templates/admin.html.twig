@@ -3,11 +3,6 @@
 
 
 <section class="admin-sql">
-	<textarea name="query" placeholder="SELECT * FROM...." type="textarea" class="textarea" form="admin-form"></textarea>
-	<form method="POST" action="admin" class="admin-sql-form" id="admin-form">
-		<input type="submit" class="submit">
-	</form>
-
 	{% if sql_result %}
 		<table>
 			{% for row in sql_result %}
@@ -27,6 +22,26 @@
 		{% else %}
 
 	{% endif %}
+	<h1>Admin SQL</h1>
+	<textarea name="query" placeholder="SELECT * FROM...." type="textarea" class="textarea" form="admin-form"></textarea>
+	<form method="POST" action="admin" class="admin-sql-form" id="admin-form">
+		<input type="submit" class="submit">
+	</form>
 </section>
+
+<div class="category-form">
+	<h2>Borrar categoria</h2>
+	<select>
+		<option>Deportes</option>
+	</select>
+
+	<button>Borrar</button>
+</div>
+
+<div class="category-form">
+	<h2>Añadir categoria</h2>
+	<input type="textfield">
+	<button>Añadir</button>
+</div>
 
 {% include 'partials/footer.html.twig' %}
